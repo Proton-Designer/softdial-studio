@@ -1,0 +1,22 @@
+---
+alwaysApply: true
+---
+# Telnyx Integration for Cold Calling Dialer
+
+This project uses **Telnyx** for voice/calling services. The AI agent has access to Telnyx Agent Skills in `.cursor/skills/`.
+
+## When integrating Telnyx APIs
+
+1. **Read the relevant SKILL.md** in `.cursor/skills/` before writing Telnyx code:
+   - `telnyx-voice-javascript` - Call control: dial, answer, hangup, transfer, bridge
+   - `telnyx-voice-media-javascript` - Audio playback, TTS, call recording
+   - `telnyx-voice-gather-javascript` - DTMF/speech input
+   - `telnyx-numbers-javascript` - Phone number management
+   - `telnyx-webrtc-javascript` - WebRTC for browser-based calling
+   - `telnyx-sip-javascript` / `telnyx-sip-integrations-javascript` - SIP trunking
+
+2. **Use the exact SDK methods and parameters** from the skills - they are auto-generated from the OpenAPI spec.
+
+3. **SDK Setup**: `npm install telnyx` and initialize with `new Telnyx({ apiKey: process.env['TELNYX_API_KEY'] })`
+
+4. **Full skill reference**: See `telnyx-ext-agent-skills/` in the project root for all 175+ skills across products and languages.

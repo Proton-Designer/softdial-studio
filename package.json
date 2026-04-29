@@ -1,0 +1,15 @@
+{
+  "name": "softdial",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix Frontend",
+    "start": "npm run start --prefix Frontend",
+    "build": "npm run build --prefix Frontend",
+    "install:frontend": "npm install --prefix Frontend",
+    "deploy:webhook": "supabase functions deploy telnyx-webhook --no-verify-jwt",
+    "deploy:functions": "supabase functions deploy"
+  },
+  "devDependencies": {
+    "supabase": "^2.76.8"
+  }
+}

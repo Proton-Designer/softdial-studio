@@ -1,0 +1,5 @@
+1. Change contacts page so that when the next page/set of contacts are loaded, it sends the user to the top of the list not keep them at the bottom.
+2. When contacts are being imported, the mapping screen is being overlapped by the menu and does not fit on the screen, so decrease the y-axis width of the container by a little so it fits the page screen fully
+3. Increase the x axis width of the create new campaign naming prompt by a little
+4. Fix import contacts drop down menu, gray out labels if already selected/in use, keep only 5 options width of the container and implement a scrollable menu
+5. Implement the CSV import functionality, single contact functionality, and add exisiting contacts functioanlity in campaigns screen, and fix status menu option in campaigns screen and fill out menu background
