@@ -1,7 +1,9 @@
 import { createClient } from 'npm:@supabase/supabase-js@2';
 import { corsHeaders } from './cors.ts';
 
-export async function getUserFromRequest(req: Request): Promise<{ user: { id: string }; error: Response | null }> {
+export async function getUserFromRequest(
+  req: Request
+): Promise<{ user: { id: string }; error: Response | null }> {
   const authHeader = req.headers.get('Authorization');
   if (!authHeader?.startsWith('Bearer ')) {
     return {
@@ -27,7 +29,9 @@ export async function getUserFromRequest(req: Request): Promise<{ user: { id: st
     return {
       user: { id: '' },
       error: new Response(
-        JSON.stringify({ error: error?.message || 'Invalid or expired token. Please sign in again.' }),
+        JSON.stringify({
+          error: error?.message || 'Invalid or expired token. Please sign in again.',
+        }),
         { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       ),
     };

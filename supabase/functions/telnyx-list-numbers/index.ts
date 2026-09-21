@@ -21,10 +21,10 @@ Deno.serve(async (req) => {
       .order('created_at', { ascending: false });
 
     if (dbError) {
-      return new Response(
-        JSON.stringify({ error: dbError.message }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
+      return new Response(JSON.stringify({ error: dbError.message }), {
+        status: 500,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
     }
 
     return new Response(JSON.stringify({ numbers: userNumbers || [] }), {
@@ -32,9 +32,9 @@ Deno.serve(async (req) => {
     });
   } catch (err) {
     console.error('telnyx-list-numbers error:', err);
-    return new Response(
-      JSON.stringify({ error: String(err) }),
-      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({ error: String(err) }), {
+      status: 500,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    });
   }
 });

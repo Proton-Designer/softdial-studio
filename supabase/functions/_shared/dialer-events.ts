@@ -14,9 +14,7 @@ export type DialerEventType =
   | 'CAMPAIGN_COMPLETE'
   | 'DIALER_ERROR';
 
-let supabaseSingleton:
-  | ReturnType<typeof createClient>
-  | null = null;
+let supabaseSingleton: ReturnType<typeof createClient> | null = null;
 
 function getSupabaseAdmin() {
   if (supabaseSingleton) return supabaseSingleton;

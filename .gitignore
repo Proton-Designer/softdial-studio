@@ -1,26 +1,38 @@
+# OS
 .DS_Store
+Thumbs.db
 
 # Dependencies
 node_modules/
-Frontend/node_modules/
 
 # Build output
 dist/
-Frontend/dist/
+build/
+*.tsbuildinfo
+.tmp/
 
-# Environment files
+# Environment files — never commit real secrets
 .env
 .env.*
 !.env.example
-Frontend/.env
-Frontend/.env.*
-!Frontend/.env.example
 
 # Logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# Editor / tooling caches
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.eslintcache
+.playwright-mcp/
+
 # Supabase local artifacts
 supabase/.temp/
+supabase/.branches/
+
+# Agent-Brain generated scan artifacts (indexes are committed, scans are not)
+.brain/.scan/

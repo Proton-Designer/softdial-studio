@@ -10,11 +10,8 @@ export const PREMIUM_AMD_CONFIG = {
 
 export function normalizeAmdResult(value: string | null | undefined): AmdResult {
   const normalized = (value ?? '').toLowerCase().trim();
-  if (
-    normalized === 'human' ||
-    normalized === 'human_residence' ||
-    normalized === 'human_business'
-  ) return 'human';
+  if (normalized === 'human' || normalized === 'human_residence' || normalized === 'human_business')
+    return 'human';
   if (normalized === 'machine') return 'machine';
   if (normalized === 'fax_detected' || normalized === 'silence') return 'machine';
   return 'not_sure';

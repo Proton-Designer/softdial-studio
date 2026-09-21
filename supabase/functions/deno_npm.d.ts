@@ -2,15 +2,18 @@
  * Type declaration for Deno npm: specifier so the IDE resolves the module.
  * At runtime Supabase Edge Functions (Deno) resolve npm:@supabase/supabase-js@2 natively.
  */
-declare module "npm:@supabase/supabase-js@2" {
+declare module 'npm:@supabase/supabase-js@2' {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   type QueryResult<T = any> = { data: T | null; error: { message: string } | null };
-  
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   interface QueryBuilder {
     eq(column: string, value: unknown): QueryBuilder;
     not(column: string, operator: string, value: unknown): QueryBuilder;
-    order(column: string, options?: { ascending?: boolean; referencedTable?: string }): QueryBuilder;
+    order(
+      column: string,
+      options?: { ascending?: boolean; referencedTable?: string }
+    ): QueryBuilder;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     range(from: number, to: number): Promise<QueryResult<any>>;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

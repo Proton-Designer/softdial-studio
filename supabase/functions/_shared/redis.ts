@@ -1,12 +1,7 @@
 import { Redis } from 'npm:@upstash/redis@1.35.3';
 
 export type CallState =
-  | 'initiated'
-  | 'answered_pending_amd'
-  | 'human_connected'
-  | 'machine'
-  | 'no_answer'
-  | 'hangup';
+  'initiated' | 'answered_pending_amd' | 'human_connected' | 'machine' | 'no_answer' | 'hangup';
 
 export interface ActiveCallState {
   userId: string;
@@ -55,7 +50,9 @@ export function getRedis(): Redis {
   const url = Deno.env.get('UPSTASH_REDIS_REST_URL') ?? Deno.env.get('REDIS_URL');
   const token = Deno.env.get('UPSTASH_REDIS_REST_TOKEN') ?? Deno.env.get('REDIS_TOKEN');
   if (!url || !token) {
-    throw new Error('Missing Upstash Redis env. Set UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN.');
+    throw new Error(
+      'Missing Upstash Redis env. Set UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN.'
+    );
   }
   redisSingleton = new Redis({ url, token });
   return redisSingleton;
@@ -84,7 +81,10 @@ export async function delCallState(callControlId: string): Promise<void> {
   await redis.del(redisKeys.call(callControlId));
 }
 
-export async function setSessionBatchState(sessionId: string, state: SessionBatchState): Promise<void> {
+export async function setSessionBatchState(
+  sessionId: string,
+  state: SessionBatchState
+): Promise<void> {
   const redis = getRedis();
   await redis.set(redisKeys.sessionBatch(sessionId), state, { ex: 600 });
 }
@@ -94,7 +94,10 @@ export async function getSessionBatchState(sessionId: string): Promise<SessionBa
   return (await redis.get<SessionBatchState>(redisKeys.sessionBatch(sessionId))) ?? null;
 }
 
-export async function setAgentSessionState(userId: string, state: AgentSessionState): Promise<void> {
+export async function setAgentSessionState(
+  userId: string,
+  state: AgentSessionState
+): Promise<void> {
   const redis = getRedis();
   await redis.set(redisKeys.agentSession(userId), state, { ex: 3600 });
 }

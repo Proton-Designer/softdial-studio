@@ -15,10 +15,10 @@ Deno.serve(async (req) => {
 
     const apiKey = Deno.env.get('TELNYX_API_KEY');
     if (!apiKey) {
-      return new Response(
-        JSON.stringify({ error: 'TELNYX_API_KEY not configured' }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
+      return new Response(JSON.stringify({ error: 'TELNYX_API_KEY not configured' }), {
+        status: 500,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
     }
 
     const client = new Telnyx({ apiKey });
@@ -51,16 +51,23 @@ Deno.serve(async (req) => {
   } catch (err: unknown) {
     console.error('telnyx-search-numbers error:', err);
     const message = err instanceof Error ? err.message : String(err);
-    const isTelnyxFilter = message.includes('10031') || message.includes('best_effort') || message.includes('No numbers found');
+    const isTelnyxFilter =
+      message.includes('10031') ||
+      message.includes('best_effort') ||
+      message.includes('No numbers found');
     if (isTelnyxFilter) {
       return new Response(
-        JSON.stringify({ numbers: [], message: 'No numbers found for this area. Try a different area code or leave it blank for general search.' }),
+        JSON.stringify({
+          numbers: [],
+          message:
+            'No numbers found for this area. Try a different area code or leave it blank for general search.',
+        }),
         { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
-    return new Response(
-      JSON.stringify({ error: message }),
-      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({ error: message }), {
+      status: 500,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    });
   }
 });

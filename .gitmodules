@@ -1,0 +1,4 @@
+[submodule "vendor/telnyx-agent-skills"]
+	path = vendor/telnyx-agent-skills
+	url = https://github.com/team-telnyx/telnyx-ext-agent-skills.git
+	branch = main

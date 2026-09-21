@@ -36,7 +36,10 @@ Deno.serve(async (req) => {
     const connectRate = callsToday > 0 ? Math.round((answeredCount / callsToday) * 1000) / 10 : 0;
     const talkTimeSeconds = list
       .filter((r: { outcome: string }) => r.outcome === 'answered')
-      .reduce((sum: number, r: { duration_seconds?: number }) => sum + (r.duration_seconds ?? 0), 0);
+      .reduce(
+        (sum: number, r: { duration_seconds?: number }) => sum + (r.duration_seconds ?? 0),
+        0
+      );
 
     const hours = Math.floor(talkTimeSeconds / 3600);
     const mins = Math.floor((talkTimeSeconds % 3600) / 60);
@@ -53,9 +56,9 @@ Deno.serve(async (req) => {
     );
   } catch (err) {
     console.error('dashboard-stats error:', err);
-    return new Response(
-      JSON.stringify({ error: String(err) }),
-      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({ error: String(err) }), {
+      status: 500,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    });
   }
 });

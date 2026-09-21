@@ -56,14 +56,22 @@ export interface AgentCallbackState {
 }
 
 export function encodeAgentCallbackState(state: { userId: string; sessionId: string }): string {
-  return btoa(JSON.stringify({ t: 'agent' as const, userId: state.userId, sessionId: state.sessionId }));
+  return btoa(
+    JSON.stringify({ t: 'agent' as const, userId: state.userId, sessionId: state.sessionId })
+  );
 }
 
-export function decodeAgentCallbackState(value: string | null | undefined): AgentCallbackState | null {
+export function decodeAgentCallbackState(
+  value: string | null | undefined
+): AgentCallbackState | null {
   if (!value) return null;
   try {
     const decoded = JSON.parse(atob(value)) as Record<string, unknown>;
-    if (decoded?.t === 'agent' && typeof decoded?.userId === 'string' && typeof decoded?.sessionId === 'string') {
+    if (
+      decoded?.t === 'agent' &&
+      typeof decoded?.userId === 'string' &&
+      typeof decoded?.sessionId === 'string'
+    ) {
       return { t: 'agent', userId: decoded.userId, sessionId: decoded.sessionId };
     }
     return null;
@@ -72,8 +80,14 @@ export function decodeAgentCallbackState(value: string | null | undefined): Agen
   }
 }
 
-export function getContactDisplayName(contact: Pick<BatchContact, 'business_name' | 'first_name' | 'last_name'>): string {
-  return contact.business_name || `${contact.first_name ?? ''} ${contact.last_name ?? ''}`.trim() || 'Unknown contact';
+export function getContactDisplayName(
+  contact: Pick<BatchContact, 'business_name' | 'first_name' | 'last_name'>
+): string {
+  return (
+    contact.business_name ||
+    `${contact.first_name ?? ''} ${contact.last_name ?? ''}`.trim() ||
+    'Unknown contact'
+  );
 }
 
 export async function fetchDialableContacts(
@@ -83,12 +97,17 @@ export async function fetchDialableContacts(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { data, error } = await (supabase
     .from('campaign_leads')
-    .select('contact:contacts!inner(id,business_name,first_name,last_name,phone_number,user_id,call_status,created_at)')
+    .select(
+      'contact:contacts!inner(id,business_name,first_name,last_name,phone_number,user_id,call_status,created_at)'
+    )
     .eq('campaign_id', args.campaignId)
     .eq('contact.user_id', args.userId)
     .not('contact.call_status', 'in', '("contacted","do_not_call")')
     .order('created_at', { ascending: true, referencedTable: 'contacts' })
-    .range(args.offset, args.offset + args.limit - 1) as Promise<{ data: unknown; error: { message: string } | null }>);
+    .range(args.offset, args.offset + args.limit - 1) as Promise<{
+    data: unknown;
+    error: { message: string } | null;
+  }>);
 
   if (error) throw new Error(error.message);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -478,7 +497,10 @@ export async function handleAmdResult(
           to: callbackNumber,
           from: sessionFromNumber,
           webhookUrl,
-          clientState: encodeAgentCallbackState({ userId: callState.userId, sessionId: callState.sessionId }),
+          clientState: encodeAgentCallbackState({
+            userId: callState.userId,
+            sessionId: callState.sessionId,
+          }),
         });
         dialerLog('amd_agent_callback_dial_success', {
           sessionId: callState.sessionId,
@@ -510,7 +532,8 @@ export async function handleAmdResult(
       if (!callbackNumber) {
         await publishDialerEvent(callState.userId, 'DIALER_ERROR', {
           sessionId: callState.sessionId,
-          error: 'Human answered but Agent is not connected. (No callback number and no active agent leg).',
+          error:
+            'Human answered but Agent is not connected. (No callback number and no active agent leg).',
         });
       }
     }
@@ -586,7 +609,9 @@ export async function completeBatchAndAdvanceIfNeeded(
   });
   const { data: session, error } = await supabase
     .from('dialer_sessions')
-    .select('id,user_id,campaign_id,status,lines_count,current_index,total_contacts,conference_name,from_number')
+    .select(
+      'id,user_id,campaign_id,status,lines_count,current_index,total_contacts,conference_name,from_number'
+    )
     .eq('id', args.sessionId)
     .maybeSingle();
   if (error || !session || session.status !== 'active') {

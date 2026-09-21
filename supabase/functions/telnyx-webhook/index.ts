@@ -26,10 +26,7 @@ function webhookLog(step: string, meta: Record<string, unknown> = {}): void {
 }
 
 function getSupabaseAdmin() {
-  return createClient(
-    Deno.env.get('SUPABASE_URL')!,
-    Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
-  );
+  return createClient(Deno.env.get('SUPABASE_URL')!, Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!);
 }
 
 async function verifySignature(req: Request, rawBody: string): Promise<boolean> {
@@ -59,7 +56,9 @@ async function verifySignature(req: Request, rawBody: string): Promise<boolean> 
   );
   const payload = `${timestamp}|${rawBody}`;
   const digest = await crypto.subtle.sign('HMAC', key, encoder.encode(payload));
-  const expected = Array.from(new Uint8Array(digest)).map((b) => b.toString(16).padStart(2, '0')).join('');
+  const expected = Array.from(new Uint8Array(digest))
+    .map((b) => b.toString(16).padStart(2, '0'))
+    .join('');
   // Some Telnyx payloads include signature prefixes like "t=...,v1=...".
   if (expected === signature) return true;
   if (signature.includes('v1=')) {
@@ -82,7 +81,9 @@ async function processWebhook(body: WebhookBody): Promise<void> {
   const occurredAt = body?.data?.occurred_at ?? null;
   const payload = (body?.data?.payload ?? {}) as Record<string, unknown>;
   const callControlId = asString(payload.call_control_id || payload.call_session_id);
-  const clientStateRaw = asString(payload.client_state ?? (body?.data as Record<string, unknown>)?.client_state);
+  const clientStateRaw = asString(
+    payload.client_state ?? (body?.data as Record<string, unknown>)?.client_state
+  );
   const clientState = decodeClientState(clientStateRaw);
   const agentCallback = decodeAgentCallbackState(clientStateRaw);
   const amdResult = asString(payload.result);
@@ -92,15 +93,19 @@ async function processWebhook(body: WebhookBody): Promise<void> {
     occurredAt,
     callControlId,
     hasClientStateRaw: Boolean(clientStateRaw),
-    decodedClientState: clientState ? {
-      sessionId: clientState.sessionId,
-      contactId: clientState.contactId,
-      batchIndex: clientState.batchIndex,
-    } : null,
-    decodedAgentCallback: agentCallback ? {
-      sessionId: agentCallback.sessionId,
-      userId: agentCallback.userId,
-    } : null,
+    decodedClientState: clientState
+      ? {
+          sessionId: clientState.sessionId,
+          contactId: clientState.contactId,
+          batchIndex: clientState.batchIndex,
+        }
+      : null,
+    decodedAgentCallback: agentCallback
+      ? {
+          sessionId: agentCallback.sessionId,
+          userId: agentCallback.userId,
+        }
+      : null,
     amdResult: amdResult || null,
   });
 
@@ -111,18 +116,20 @@ async function processWebhook(body: WebhookBody): Promise<void> {
 
   const supabase = getSupabaseAdmin();
   const cachedCall = await getCallState(callControlId);
-  const callContext = cachedCall ?? (clientState
-    ? {
-      userId: clientState.userId,
-      sessionId: clientState.sessionId,
-      campaignId: clientState.campaignId,
-      contactId: clientState.contactId,
-      callControlId,
-      status: 'initiated' as const,
-      batchIndex: clientState.batchIndex,
-      startedAt: Date.now(),
-    }
-    : null);
+  const callContext =
+    cachedCall ??
+    (clientState
+      ? {
+          userId: clientState.userId,
+          sessionId: clientState.sessionId,
+          campaignId: clientState.campaignId,
+          contactId: clientState.contactId,
+          callControlId,
+          status: 'initiated' as const,
+          batchIndex: clientState.batchIndex,
+          startedAt: Date.now(),
+        }
+      : null);
   webhookLog('call_context_resolved', {
     eventType,
     callControlId,
@@ -189,7 +196,11 @@ async function processWebhook(body: WebhookBody): Promise<void> {
   }
 
   const agentState = await getAgentSessionState(callContext.userId);
-  if (!agentState || agentState.sessionId !== callContext.sessionId || agentState.status !== 'active') {
+  if (
+    !agentState ||
+    agentState.sessionId !== callContext.sessionId ||
+    agentState.status !== 'active'
+  ) {
     webhookLog('hanging_up_due_to_invalid_agent_state', {
       eventType,
       callControlId,
@@ -218,20 +229,18 @@ async function processWebhook(body: WebhookBody): Promise<void> {
         contactId: callContext.contactId,
       });
       await setCallState({ ...callContext, status: 'initiated' });
-      await supabase
-        .from('call_logs')
-        .upsert(
-          {
-            session_id: callContext.sessionId,
-            user_id: callContext.userId,
-            campaign_id: callContext.campaignId,
-            contact_id: callContext.contactId,
-            call_control_id: callControlId,
-            status: 'initiated',
-            direction: 'outbound',
-          },
-          { onConflict: 'call_control_id' }
-        );
+      await supabase.from('call_logs').upsert(
+        {
+          session_id: callContext.sessionId,
+          user_id: callContext.userId,
+          campaign_id: callContext.campaignId,
+          contact_id: callContext.contactId,
+          call_control_id: callControlId,
+          status: 'initiated',
+          direction: 'outbound',
+        },
+        { onConflict: 'call_control_id' }
+      );
       await supabase
         .from('contacts')
         .update({
@@ -360,10 +369,14 @@ Deno.serve(async (req: Request) => {
     const body = JSON.parse(rawBody) as WebhookBody;
     webhookLog('request_accepted_for_async_processing', {
       eventType: body?.data?.event_type ?? null,
-      callControlId: asString((body?.data?.payload as Record<string, unknown> | undefined)?.call_control_id),
+      callControlId: asString(
+        (body?.data?.payload as Record<string, unknown> | undefined)?.call_control_id
+      ),
     });
     queueMicrotask(() => {
-      processWebhook(body).catch((err) => console.error('telnyx-webhook async processing error:', err));
+      processWebhook(body).catch((err) =>
+        console.error('telnyx-webhook async processing error:', err)
+      );
     });
 
     return new Response(JSON.stringify({ received: true }), {

@@ -1,0 +1,10 @@
+node_modules/
+dist/
+build/
+vendor/
+.brain/indexes/
+*.min.css
+*.min.js
+package-lock.json
+apps/web/src/components/ui/
+.cursor/

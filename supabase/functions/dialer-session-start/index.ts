@@ -47,7 +47,8 @@ Deno.serve(async (req) => {
   log('auth_ok', { requestId, userId: user.id });
 
   try {
-    const featureEnabled = (Deno.env.get('PARALLEL_DIALER_ENABLED') ?? 'true').toLowerCase() === 'true';
+    const featureEnabled =
+      (Deno.env.get('PARALLEL_DIALER_ENABLED') ?? 'true').toLowerCase() === 'true';
     if (!featureEnabled) {
       log('feature_disabled');
       return new Response(JSON.stringify({ error: 'Parallel dialer is disabled' }), {
@@ -63,7 +64,12 @@ Deno.serve(async (req) => {
     const agentCallControlId = body.agentCallControlId?.trim();
     const fromNumber = body.fromNumber?.trim();
     const agentCallbackNumber = body.agentCallbackNumber?.trim() || undefined;
-    log('body_parsed', { requestId, campaignId, linesCount, fromNumber: fromNumber ? '***' : null });
+    log('body_parsed', {
+      requestId,
+      campaignId,
+      linesCount,
+      fromNumber: fromNumber ? '***' : null,
+    });
 
     if (!campaignId) {
       log('validation_failed', { requestId, reason: 'missing_campaignId' });
@@ -113,7 +119,11 @@ Deno.serve(async (req) => {
       .maybeSingle();
     if (existingError) {
       log('existing_session_query_error', { requestId, error: existingError.message });
-      return respond(500, { error: 'Could not check existing sessions.' }, 'check_existing_session');
+      return respond(
+        500,
+        { error: 'Could not check existing sessions.' },
+        'check_existing_session'
+      );
     }
     if (existingSession) {
       log('conflict_active_session_exists', { requestId, existingSessionId: existingSession.id });
@@ -134,7 +144,8 @@ Deno.serve(async (req) => {
       return respond(
         503,
         {
-          error: 'Server is not configured for outbound dialing. Set TELNYX_API_KEY in Supabase Edge Function secrets.',
+          error:
+            'Server is not configured for outbound dialing. Set TELNYX_API_KEY in Supabase Edge Function secrets.',
           code: 'MISSING_TELNYX_API_KEY',
         },
         'config_validation'
@@ -148,7 +159,8 @@ Deno.serve(async (req) => {
       return respond(
         503,
         {
-          error: 'Parallel dialing requires a Call Control connection. Set TELNYX_CONNECTION_ID in Supabase secrets. In Telnyx Portal: create a Call Control Application with webhook URL pointing to your Supabase telnyx-webhook, then use that connection’s ID. See docs/TELNYX_CALL_CONTROL_SETUP.md.',
+          error:
+            'Parallel dialing requires a Call Control connection. Set TELNYX_CONNECTION_ID in Supabase secrets. In Telnyx Portal: create a Call Control Application with webhook URL pointing to your Supabase telnyx-webhook, then use that connection’s ID. See docs/TELNYX_CALL_CONTROL_SETUP.md.',
           code: 'MISSING_TELNYX_CONNECTION_ID',
         },
         'config_validation'
@@ -167,7 +179,11 @@ Deno.serve(async (req) => {
 
     if (allDialable.length === 0) {
       log('validation_failed', { requestId, reason: 'no_dialable_contacts' });
-      return respond(400, { error: 'No dialable contacts in campaign.' }, 'validate_dialable_contacts');
+      return respond(
+        400,
+        { error: 'No dialable contacts in campaign.' },
+        'validate_dialable_contacts'
+      );
     }
 
     log('inserting_dialer_session', { requestId });
@@ -202,7 +218,11 @@ Deno.serve(async (req) => {
           name: buildConferenceName(user.id, sessionRow.id),
         };
 
-    log('conference_ready', { requestId, agentCallControlId: !!agentCallControlId, conferenceName: conference.name });
+    log('conference_ready', {
+      requestId,
+      agentCallControlId: !!agentCallControlId,
+      conferenceName: conference.name,
+    });
     await supabase
       .from('dialer_sessions')
       .update({
@@ -210,7 +230,11 @@ Deno.serve(async (req) => {
         conference_name: conference.name,
       })
       .eq('id', sessionRow.id);
-    log('conference_updated', { requestId, conferenceId: conference.id, conferenceName: conference.name });
+    log('conference_updated', {
+      requestId,
+      conferenceId: conference.id,
+      conferenceName: conference.name,
+    });
 
     log('setting_redis_agent_state', { requestId });
     await setAgentSessionState(user.id, {
@@ -264,11 +288,15 @@ Deno.serve(async (req) => {
     const msg = String(err);
     console.error('[dialer-session-start] error', err);
     log('catch_error', { requestId, message: msg });
-    if (msg.includes('TELNYX_CONNECTION_REJECTED') || (msg.includes('422') && msg.includes('webhook'))) {
+    if (
+      msg.includes('TELNYX_CONNECTION_REJECTED') ||
+      (msg.includes('422') && msg.includes('webhook'))
+    ) {
       return respond(
         503,
         {
-          error: 'The connection ID is not valid for server-side dialing. Create a Call Control Application in the Telnyx portal with your webhook URL and set its connection ID as TELNYX_CONNECTION_ID. Do not use the WebRTC credential connection. See docs/TELNYX_CALL_CONTROL_SETUP.md.',
+          error:
+            'The connection ID is not valid for server-side dialing. Create a Call Control Application in the Telnyx portal with your webhook URL and set its connection ID as TELNYX_CONNECTION_ID. Do not use the WebRTC credential connection. See docs/TELNYX_CALL_CONTROL_SETUP.md.',
           code: 'INVALID_TELNYX_CONNECTION',
         },
         'telnyx_422'

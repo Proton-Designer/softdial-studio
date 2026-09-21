@@ -99,7 +99,8 @@ function headerMatchScore(originalHeader: string, field: string): number {
 function looksLikeLink(v: string): boolean {
   const s = (v || '').trim().toLowerCase();
   if (s.startsWith('http://') || s.startsWith('https://')) return true;
-  if (s.startsWith('www.') || s.includes('.com') || s.includes('.org') || s.includes('.net')) return true;
+  if (s.startsWith('www.') || s.includes('.com') || s.includes('.org') || s.includes('.net'))
+    return true;
   if (/maps\.google|google\.com\/maps|goo\.gl|bit\.ly/i.test(s)) return true;
   if (s.includes('/') && (s.includes('.') || s.length > 15)) return true;
   return false;
@@ -193,13 +194,13 @@ Deno.serve(async (req) => {
   if (authError) return authError;
 
   try {
-    const body = await req.json() as { csv_text?: string };
+    const body = (await req.json()) as { csv_text?: string };
     const csvText = body?.csv_text;
     if (!csvText || typeof csvText !== 'string') {
-      return new Response(
-        JSON.stringify({ error: 'Missing csv_text in body' }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
+      return new Response(JSON.stringify({ error: 'Missing csv_text in body' }), {
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
     }
 
     const rows = parse(csvText, {
@@ -239,9 +240,9 @@ Deno.serve(async (req) => {
     );
   } catch (err) {
     console.error('contacts-parse-csv error:', err);
-    return new Response(
-      JSON.stringify({ error: String(err) }),
-      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({ error: String(err) }), {
+      status: 500,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    });
   }
 });

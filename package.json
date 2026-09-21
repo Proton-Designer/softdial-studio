@@ -1,15 +1,39 @@
 {
-  "name": "softdial",
+  "name": "softdial-studio",
+  "version": "0.1.0",
   "private": true,
+  "description": "Parallel dialing platform: React/Vite web app backed by Supabase Edge Functions and Telnyx Call Control.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "workspaces": [
+    "apps/*"
+  ],
   "scripts": {
-    "dev": "npm run dev --prefix Frontend",
-    "start": "npm run start --prefix Frontend",
-    "build": "npm run build --prefix Frontend",
-    "install:frontend": "npm install --prefix Frontend",
-    "deploy:webhook": "supabase functions deploy telnyx-webhook --no-verify-jwt",
-    "deploy:functions": "supabase functions deploy"
+    "dev": "npm run dev --workspace @softdial/web",
+    "build": "npm run build --workspace @softdial/web",
+    "preview": "npm run preview --workspace @softdial/web",
+    "typecheck": "npm run typecheck --workspace @softdial/web",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "npm run format:check && npm run lint && npm run typecheck",
+    "db:push": "supabase db push",
+    "functions:deploy": "supabase functions deploy",
+    "functions:deploy:webhook": "supabase functions deploy telnyx-webhook --no-verify-jwt"
   },
   "devDependencies": {
-    "supabase": "^2.76.8"
+    "@eslint/js": "^9.37.0",
+    "eslint": "^9.37.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.4.0",
+    "prettier": "^3.6.2",
+    "supabase": "^2.76.8",
+    "typescript-eslint": "^8.46.0"
   }
 }

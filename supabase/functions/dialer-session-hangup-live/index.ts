@@ -60,7 +60,9 @@ Deno.serve(async (req) => {
       if (activeCallIds.length > 0) {
         // Fallback: If no "Human" call is registered but there are active calls, maybe we should hang them all up?
         // For now, let's just log this case.
-        console.warn('[hangup-live] has_active_calls_but_no_human_winner', { count: activeCallIds.length });
+        console.warn('[hangup-live] has_active_calls_but_no_human_winner', {
+          count: activeCallIds.length,
+        });
       }
       return new Response(JSON.stringify({ error: 'No live call to end' }), {
         status: 400,
@@ -83,10 +85,9 @@ Deno.serve(async (req) => {
       });
     }
 
-    return new Response(
-      JSON.stringify({ ok: true }),
-      { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({ ok: true }), {
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    });
   } catch (err) {
     console.error('dialer-session-hangup-live error:', err);
     return new Response(JSON.stringify({ error: String(err) }), {

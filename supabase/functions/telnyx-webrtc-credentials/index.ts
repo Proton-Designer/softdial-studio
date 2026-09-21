@@ -14,7 +14,9 @@ Deno.serve(async (req) => {
 
     if (!apiKey || !connectionId) {
       return new Response(
-        JSON.stringify({ error: 'Telnyx not configured (TELNYX_API_KEY, TELNYX_CREDENTIAL_CONNECTION_ID)' }),
+        JSON.stringify({
+          error: 'Telnyx not configured (TELNYX_API_KEY, TELNYX_CREDENTIAL_CONNECTION_ID)',
+        }),
         { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
@@ -31,18 +33,23 @@ Deno.serve(async (req) => {
     }
 
     // Call Telnyx token API directly so we control response parsing (SDK response shape varies)
-    const tokenApiRes = await fetch(`https://api.telnyx.com/v2/telephony_credentials/${encodeURIComponent(credId)}/token`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`,
-      },
-    });
+    const tokenApiRes = await fetch(
+      `https://api.telnyx.com/v2/telephony_credentials/${encodeURIComponent(credId)}/token`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${apiKey}`,
+        },
+      }
+    );
     const tokenBody = await tokenApiRes.text();
     if (!tokenApiRes.ok) {
       console.error('Telnyx token API error', tokenApiRes.status, tokenBody);
       return new Response(
-        JSON.stringify({ error: 'Telnyx token API failed. Check credential connection ID and API key.' }),
+        JSON.stringify({
+          error: 'Telnyx token API failed. Check credential connection ID and API key.',
+        }),
         { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
@@ -51,29 +58,40 @@ Deno.serve(async (req) => {
       const parsed = JSON.parse(tokenBody) as Record<string, unknown>;
       const data = parsed?.data as string | { token?: string } | undefined;
       if (typeof data === 'string') token = data;
-      else if (data && typeof data === 'object' && typeof (data as { token?: string }).token === 'string') token = (data as { token: string }).token;
+      else if (
+        data &&
+        typeof data === 'object' &&
+        typeof (data as { token?: string }).token === 'string'
+      )
+        token = (data as { token: string }).token;
       else if (typeof parsed?.token === 'string') token = parsed.token as string;
     } catch {
       // Response might be plain JWT string
       if (tokenBody.startsWith('eyJ')) token = tokenBody.trim();
     }
     if (!token) {
-      console.error('Token response missing token field. Body length:', tokenBody?.length, 'starts with:', tokenBody?.slice(0, 80));
+      console.error(
+        'Token response missing token field. Body length:',
+        tokenBody?.length,
+        'starts with:',
+        tokenBody?.slice(0, 80)
+      );
       return new Response(
-        JSON.stringify({ error: 'Failed to get WebRTC token from Telnyx. Check credential connection.' }),
+        JSON.stringify({
+          error: 'Failed to get WebRTC token from Telnyx. Check credential connection.',
+        }),
         { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
-    return new Response(
-      JSON.stringify({ token }),
-      { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({ token }), {
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    });
   } catch (err) {
     console.error('telnyx-webrtc-credentials error:', err);
-    return new Response(
-      JSON.stringify({ error: String(err) }),
-      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({ error: String(err) }), {
+      status: 500,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    });
   }
 });

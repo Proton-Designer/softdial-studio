@@ -47,10 +47,7 @@ Deno.serve(async (req) => {
       });
     }
 
-    await supabase
-      .from('dialer_sessions')
-      .update({ status: 'paused' })
-      .eq('id', sessionId);
+    await supabase.from('dialer_sessions').update({ status: 'paused' }).eq('id', sessionId);
 
     await setAgentSessionState(user.id, {
       sessionId,

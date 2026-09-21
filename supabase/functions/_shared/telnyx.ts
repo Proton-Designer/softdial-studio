@@ -1,4 +1,3 @@
-
 interface TelnyxCallResponse {
   data?: {
     call_control_id?: string;
@@ -56,11 +55,17 @@ async function telnyxRequest<T = unknown>(path: string, init: RequestInit): Prom
   }
 
   if (!res.ok) {
-    const errBody = typeof parsed === 'object' && parsed !== null ? JSON.stringify(parsed) : String(parsed);
-    console.error('[telnyx-api] request_failed', { method, path, status: res.status, body: errBody });
+    const errBody =
+      typeof parsed === 'object' && parsed !== null ? JSON.stringify(parsed) : String(parsed);
+    console.error('[telnyx-api] request_failed', {
+      method,
+      path,
+      status: res.status,
+      body: errBody,
+    });
     if (res.status === 422 && (errBody.includes('webhook') || errBody.includes('Call Control'))) {
       throw new Error(
-        'TELNYX_CONNECTION_REJECTED: The connection ID is not a Call Control Application with a webhook URL. In Telnyx Portal create a Call Control Application, set its webhook to your Supabase telnyx-webhook URL, then use that application\'s connection ID as TELNYX_CONNECTION_ID. Do not use the WebRTC credential connection ID here.'
+        "TELNYX_CONNECTION_REJECTED: The connection ID is not a Call Control Application with a webhook URL. In Telnyx Portal create a Call Control Application, set its webhook to your Supabase telnyx-webhook URL, then use that application's connection ID as TELNYX_CONNECTION_ID. Do not use the WebRTC credential connection ID here."
       );
     }
     throw new Error(`Telnyx API ${path} failed (${res.status}): ${errBody}`);
@@ -142,7 +147,10 @@ export async function dialOutboundCall(args: {
   return { callControlId };
 }
 
-export async function joinCallToConference(callControlId: string, conferenceName: string): Promise<void> {
+export async function joinCallToConference(
+  callControlId: string,
+  conferenceName: string
+): Promise<void> {
   console.log('[telnyx-api] join_conference_start', { callControlId, conferenceName });
   await telnyxRequest(`/calls/${encodeURIComponent(callControlId)}/actions/join_conference`, {
     method: 'POST',

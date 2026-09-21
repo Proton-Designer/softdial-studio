@@ -7,16 +7,16 @@ const CANONICAL_TO_DB: Record<string, string> = {
   'Business Name': 'business_name',
   'Business Link': 'business_link',
   'Business Type': 'business_type',
-  'Rating': 'rating',
+  Rating: 'rating',
   'Review Count': 'review_count',
   'Open Hours': 'open_hours',
   'Phone Number': 'phone_number',
-  'Website': 'website',
-  'Notes': 'notes',
+  Website: 'website',
+  Notes: 'notes',
   'First Name': 'first_name',
   'Last Name': 'last_name',
   'Owner Contact': 'owner_contact',
-  'Address': 'address',
+  Address: 'address',
 };
 
 function normalizePhone(value: string | null | undefined): string | null {
@@ -34,7 +34,7 @@ Deno.serve(async (req) => {
   if (authError) return authError;
 
   try {
-    const body = await req.json() as {
+    const body = (await req.json()) as {
       csv_text?: string;
       column_mappings?: { original_header: string; mapped_field: string | null }[];
       category?: string;
@@ -42,15 +42,16 @@ Deno.serve(async (req) => {
     };
     const csvText = body?.csv_text;
     const columnMappings = body?.column_mappings;
-    const category = body?.category && ['Cold', 'Warm', 'Follow Up', 'Voicemail', 'Booked'].includes(body.category)
-      ? body.category
-      : 'Cold';
+    const category =
+      body?.category && ['Cold', 'Warm', 'Follow Up', 'Voicemail', 'Booked'].includes(body.category)
+        ? body.category
+        : 'Cold';
     const campaignId = body?.campaign_id?.trim() || null;
     if (!csvText || !Array.isArray(columnMappings)) {
-      return new Response(
-        JSON.stringify({ error: 'Missing csv_text or column_mappings' }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
+      return new Response(JSON.stringify({ error: 'Missing csv_text or column_mappings' }), {
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
     }
 
     const rows = parse(csvText, {
@@ -76,7 +77,11 @@ Deno.serve(async (req) => {
       .from('contacts')
       .select('phone_number')
       .eq('user_id', user.id);
-    const existingSet = new Set((existingPhones ?? []).map((r: { phone_number: string | null }) => (r.phone_number ?? '').replace(/\D/g, '')));
+    const existingSet = new Set(
+      (existingPhones ?? []).map((r: { phone_number: string | null }) =>
+        (r.phone_number ?? '').replace(/\D/g, '')
+      )
+    );
 
     let imported = 0;
     let skipped = 0;
@@ -121,13 +126,16 @@ Deno.serve(async (req) => {
 
     let insertedContactIds: string[] = [];
     if (toInsert.length > 0) {
-      const { data: inserted, error } = await supabase.from('contacts').insert(toInsert).select('id');
+      const { data: inserted, error } = await supabase
+        .from('contacts')
+        .insert(toInsert)
+        .select('id');
       if (error) {
         console.error('contacts-import insert error:', error);
-        return new Response(
-          JSON.stringify({ error: error.message }),
-          { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-        );
+        return new Response(JSON.stringify({ error: error.message }), {
+          status: 500,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        });
       }
       imported = toInsert.length;
       insertedContactIds = (inserted ?? []).map((r: { id: string }) => r.id);
@@ -153,15 +161,14 @@ Deno.serve(async (req) => {
       }
     }
 
-    return new Response(
-      JSON.stringify({ imported, skipped, duplicates }),
-      { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({ imported, skipped, duplicates }), {
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    });
   } catch (err) {
     console.error('contacts-import error:', err);
-    return new Response(
-      JSON.stringify({ error: String(err) }),
-      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({ error: String(err) }), {
+      status: 500,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    });
   }
 });

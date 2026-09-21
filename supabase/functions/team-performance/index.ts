@@ -4,7 +4,11 @@ import { getUserFromRequest } from '../_shared/auth.ts';
 
 const DAY_NAMES = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-function getDateRange(range: string, customStart?: string, customEnd?: string): { start: Date; end: Date } {
+function getDateRange(
+  range: string,
+  customStart?: string,
+  customEnd?: string
+): { start: Date; end: Date } {
   const end = new Date();
   end.setUTCHours(23, 59, 59, 999);
   const start = new Date();
@@ -80,15 +84,14 @@ Deno.serve(async (req) => {
       };
     });
 
-    return new Response(
-      JSON.stringify({ data }),
-      { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({ data }), {
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    });
   } catch (err) {
     console.error('team-performance error:', err);
-    return new Response(
-      JSON.stringify({ error: String(err) }),
-      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({ error: String(err) }), {
+      status: 500,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    });
   }
 });

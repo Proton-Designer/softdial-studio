@@ -71,7 +71,10 @@ Deno.serve(async (req) => {
     const connectRate = calls > 0 ? Math.round((answered / calls) * 1000) / 10 : 0;
     const talkTimeSeconds = list
       .filter((r: { outcome: string }) => r.outcome === 'answered')
-      .reduce((sum: number, r: { duration_seconds?: number }) => sum + (r.duration_seconds ?? 0), 0);
+      .reduce(
+        (sum: number, r: { duration_seconds?: number }) => sum + (r.duration_seconds ?? 0),
+        0
+      );
     const hours = Math.floor(talkTimeSeconds / 3600);
     const mins = Math.floor((talkTimeSeconds % 3600) / 60);
     const talkTimeFormatted = hours > 0 ? `${hours}h ${mins}m` : `${mins}m`;
@@ -92,15 +95,14 @@ Deno.serve(async (req) => {
       body,
     });
 
-    return new Response(
-      JSON.stringify({ created: true }),
-      { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({ created: true }), {
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    });
   } catch (err) {
     console.error('ensure-week-summary error:', err);
-    return new Response(
-      JSON.stringify({ error: String(err) }),
-      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({ error: String(err) }), {
+      status: 500,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    });
   }
 });

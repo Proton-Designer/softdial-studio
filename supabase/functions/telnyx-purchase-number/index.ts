@@ -14,19 +14,19 @@ Deno.serve(async (req) => {
     const { phone_number } = body as { phone_number?: string };
 
     if (!phone_number) {
-      return new Response(
-        JSON.stringify({ error: 'phone_number is required' }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
+      return new Response(JSON.stringify({ error: 'phone_number is required' }), {
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
     }
 
     const apiKey = Deno.env.get('TELNYX_API_KEY');
     const connectionId = Deno.env.get('TELNYX_CREDENTIAL_CONNECTION_ID');
     if (!apiKey) {
-      return new Response(
-        JSON.stringify({ error: 'TELNYX_API_KEY not configured' }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
+      return new Response(JSON.stringify({ error: 'TELNYX_API_KEY not configured' }), {
+        status: 500,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
     }
     if (!connectionId) {
       return new Response(
@@ -45,19 +45,21 @@ Deno.serve(async (req) => {
     const orderId = numberOrder.data?.id;
     const orderPhoneNumbers = numberOrder.data?.phone_numbers;
     if (!orderId || !orderPhoneNumbers?.length) {
-      return new Response(
-        JSON.stringify({ error: 'Failed to create number order' }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
+      return new Response(JSON.stringify({ error: 'Failed to create number order' }), {
+        status: 500,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
     }
 
     const orderedNumber = orderPhoneNumbers[0];
-    const telnyxId = typeof orderedNumber === 'object' && orderedNumber !== null && 'id' in orderedNumber
-      ? (orderedNumber as { id: string }).id
-      : null;
-    const num = typeof orderedNumber === 'object' && orderedNumber !== null && 'phone_number' in orderedNumber
-      ? (orderedNumber as { phone_number: string }).phone_number
-      : phone_number;
+    const telnyxId =
+      typeof orderedNumber === 'object' && orderedNumber !== null && 'id' in orderedNumber
+        ? (orderedNumber as { id: string }).id
+        : null;
+    const num =
+      typeof orderedNumber === 'object' && orderedNumber !== null && 'phone_number' in orderedNumber
+        ? (orderedNumber as { phone_number: string }).phone_number
+        : phone_number;
 
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
     const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
@@ -70,21 +72,20 @@ Deno.serve(async (req) => {
     });
 
     if (insertError) {
-      return new Response(
-        JSON.stringify({ error: insertError.message }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
+      return new Response(JSON.stringify({ error: insertError.message }), {
+        status: 500,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
     }
 
-    return new Response(
-      JSON.stringify({ success: true, phone_number: num }),
-      { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({ success: true, phone_number: num }), {
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    });
   } catch (err) {
     console.error('telnyx-purchase-number error:', err);
-    return new Response(
-      JSON.stringify({ error: String(err) }),
-      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({ error: String(err) }), {
+      status: 500,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    });
   }
 });
