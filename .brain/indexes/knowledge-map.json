@@ -2,10 +2,10 @@
   "meta": {
     "artifact": "knowledge-map",
     "version": "1.0",
-    "generated_at": "2026-09-21T22:00:27.058Z",
+    "generated_at": "2026-09-21T22:01:39.022Z",
     "target": "/Users/aymanmohammed/Desktop/Softdial",
     "git": {
-      "commit": "12911cc",
+      "commit": "7086147",
       "branch": "chore/repo-modernization",
       "dirty": true
     },
@@ -161,7 +161,7 @@
         "type": "domain",
         "status": "canonical",
         "owner": "maintainer",
-        "tokens_est": 2342,
+        "tokens_est": 2458,
         "covers": "Supabase auth, session handling, the two-layer Edge Function authorization model, service-role usage, and the per-table RLS inventory.",
         "excludes": "Telnyx webhook signature mechanics (domain.telephony); dial-loop ownership checks (domain.dialer).",
         "answers": [
@@ -415,7 +415,7 @@
         "type": "memory",
         "status": "canonical",
         "owner": "maintainer",
-        "tokens_est": 2494,
+        "tokens_est": 2721,
         "covers": "Known defects, traps, and behaviour that looks intentional but is not",
         "excludes": "Planned work (see mem.active-work), deliberate design choices (see mem.decisions)",
         "answers": [
@@ -1736,7 +1736,7 @@
       {
         "question": "how is a user authenticated when calling an Edge Function",
         "id": "domain.auth",
-        "tokens_est": 2342,
+        "tokens_est": 2458,
         "kind": "document",
         "anchor": null
       },
@@ -1792,7 +1792,7 @@
       {
         "question": "is the analytics screen real",
         "id": "mem.known-issues",
-        "tokens_est": 2494,
+        "tokens_est": 2721,
         "kind": "document",
         "anchor": null
       },
@@ -1869,7 +1869,7 @@
       {
         "question": "what are the known issues",
         "id": "mem.known-issues",
-        "tokens_est": 2494,
+        "tokens_est": 2721,
         "kind": "document",
         "anchor": null
       },
@@ -2086,7 +2086,7 @@
       {
         "question": "what is broken",
         "id": "mem.known-issues",
-        "tokens_est": 2494,
+        "tokens_est": 2721,
         "kind": "document",
         "anchor": null
       },
@@ -2177,7 +2177,7 @@
       {
         "question": "what should I not trust",
         "id": "mem.known-issues",
-        "tokens_est": 2494,
+        "tokens_est": 2721,
         "kind": "document",
         "anchor": null
       },
@@ -2205,7 +2205,7 @@
       {
         "question": "what user metadata is collected at signup",
         "id": "domain.auth",
-        "tokens_est": 2342,
+        "tokens_est": 2458,
         "kind": "document",
         "anchor": null
       },
@@ -2289,7 +2289,7 @@
       {
         "question": "where does SUPABASE_SERVICE_ROLE_KEY bypass RLS",
         "id": "domain.auth",
-        "tokens_est": 2342,
+        "tokens_est": 2458,
         "kind": "document",
         "anchor": null
       },
@@ -2359,7 +2359,7 @@
       {
         "question": "which Edge Functions are actually unauthenticated",
         "id": "domain.auth",
-        "tokens_est": 2342,
+        "tokens_est": 2458,
         "kind": "document",
         "anchor": null
       },
@@ -2408,7 +2408,7 @@
       {
         "question": "which tables have RLS and what do the policies allow",
         "id": "domain.auth",
-        "tokens_est": 2342,
+        "tokens_est": 2458,
         "kind": "document",
         "anchor": null
       },
@@ -2527,14 +2527,14 @@
       {
         "question": "why is this behaving strangely",
         "id": "mem.known-issues",
-        "tokens_est": 2494,
+        "tokens_est": 2721,
         "kind": "document",
         "anchor": null
       },
       {
         "question": "why is verify_jwt false on almost every function",
         "id": "domain.auth",
-        "tokens_est": 2342,
+        "tokens_est": 2458,
         "kind": "document",
         "anchor": null
       },

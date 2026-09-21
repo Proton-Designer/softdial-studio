@@ -56,6 +56,7 @@ documents and documents to source paths.
   failure. Update both sides together.
 - **`supabase/functions/_shared/dialer-engine.ts` changes are never local** — four functions depend on
   it and run through it concurrently.
-- **The Analytics screen is hardcoded mock data.** `Dashboard.tsx` is real.
+- **No metrics screen shows a true number.** `Analytics.tsx` is hardcoded mock data;
+  `Dashboard.tsx` is real code aggregating `call_events`, a table nothing writes.
 - **Verify before asserting.** `npm run check` and `npm run build` are the only
   gates; there is no CI and there are no tests.

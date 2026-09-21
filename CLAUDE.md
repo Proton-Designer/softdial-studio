@@ -64,8 +64,11 @@ Functions) · Postgres · Upstash Redis · Telnyx Call Control + WebRTC
 - **`supabase/functions/_shared/dialer-engine.ts` changes are never local.** Four functions depend on
   it, and the webhook and user-initiated paths run through it concurrently.
 - **`supabase/` stays at the repo root** — the Supabase CLI requires it there.
-- **Do not trust the Analytics screen.** It renders hardcoded mock data, including
-  invented agent names. `Dashboard.tsx` is the real one.
+- **No screen shows a true number today.** `Analytics.tsx` is hardcoded mock data
+  (invented agent names included). `Dashboard.tsx` is wired for real but aggregates
+  `call_events`, which **nothing in this repo ever writes** — the dial loop writes
+  `call_logs`. Its zeros are correct behaviour over an empty table, not a bug to
+  debug. See `.brain/domains/analytics.md`.
 
 ---
 

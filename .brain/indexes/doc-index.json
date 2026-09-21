@@ -2,10 +2,10 @@
   "meta": {
     "artifact": "doc-index",
     "version": "1.0",
-    "generated_at": "2026-09-21T22:00:27.058Z",
+    "generated_at": "2026-09-21T22:01:39.022Z",
     "target": "/Users/aymanmohammed/Desktop/Softdial",
     "git": {
-      "commit": "12911cc",
+      "commit": "7086147",
       "branch": "chore/repo-modernization",
       "dirty": true
     },
@@ -18,8 +18,8 @@
     "token_estimate_method": "heuristic-v1",
     "totals": {
       "documents": 31,
-      "tokens_est": 48978,
-      "always_loaded_tokens_est": 2339
+      "tokens_est": 49321,
+      "always_loaded_tokens_est": 2429
     },
     "documents": [
       {
@@ -170,9 +170,9 @@
         "status": "canonical",
         "owner": "maintainer",
         "updated": "2026-09-21",
-        "lines": 131,
+        "lines": 130,
         "budget": 150,
-        "tokens_est": 2342,
+        "tokens_est": 2458,
         "source_hash": "72ae36b48b1a82ec57268147c64b611d02180c60311c1a76ec376035c0c6554d",
         "drift_suspect": false
       },
@@ -352,9 +352,9 @@
         "status": "canonical",
         "owner": "maintainer",
         "updated": "2026-09-21",
-        "lines": 175,
+        "lines": 160,
         "budget": 200,
-        "tokens_est": 2494,
+        "tokens_est": 2721,
         "source_hash": null,
         "drift_suspect": false
       },
