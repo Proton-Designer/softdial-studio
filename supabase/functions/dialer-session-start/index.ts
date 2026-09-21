@@ -160,7 +160,7 @@ Deno.serve(async (req) => {
         503,
         {
           error:
-            'Parallel dialing requires a Call Control connection. Set TELNYX_CONNECTION_ID in Supabase secrets. In Telnyx Portal: create a Call Control Application with webhook URL pointing to your Supabase telnyx-webhook, then use that connection’s ID. See docs/TELNYX_CALL_CONTROL_SETUP.md.',
+            'Parallel dialing requires a Call Control connection. Set TELNYX_CONNECTION_ID in Supabase secrets. In Telnyx Portal: create a Call Control Application with webhook URL pointing to your Supabase telnyx-webhook, then use that connection’s ID. See docs/guides/telnyx-call-control-setup.md.',
           code: 'MISSING_TELNYX_CONNECTION_ID',
         },
         'config_validation'
@@ -296,7 +296,7 @@ Deno.serve(async (req) => {
         503,
         {
           error:
-            'The connection ID is not valid for server-side dialing. Create a Call Control Application in the Telnyx portal with your webhook URL and set its connection ID as TELNYX_CONNECTION_ID. Do not use the WebRTC credential connection. See docs/TELNYX_CALL_CONTROL_SETUP.md.',
+            'The connection ID is not valid for server-side dialing. Create a Call Control Application in the Telnyx portal with your webhook URL and set its connection ID as TELNYX_CONNECTION_ID. Do not use the WebRTC credential connection. See docs/guides/telnyx-call-control-setup.md.',
           code: 'INVALID_TELNYX_CONNECTION',
         },
         'telnyx_422'

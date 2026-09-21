@@ -2,3 +2,6 @@
 	path = vendor/telnyx-agent-skills
 	url = https://github.com/team-telnyx/telnyx-ext-agent-skills.git
 	branch = main
+[submodule "vendor/agent-brain"]
+	path = vendor/agent-brain
+	url = https://github.com/Proton-Designer/agent-brain.git

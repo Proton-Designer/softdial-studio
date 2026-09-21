@@ -27,5 +27,4 @@ Human-facing documentation. For AI-agent context, start at
 
 ## Other
 
-- [backlog.md](backlog.md) — outstanding UI/UX fixes carried over from earlier work
 - [../CONTRIBUTING.md](../CONTRIBUTING.md) — conventions and workflow

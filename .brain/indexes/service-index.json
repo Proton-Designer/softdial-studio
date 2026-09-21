@@ -1,0 +1,60 @@
+{
+  "meta": {
+    "artifact": "service-index",
+    "version": "1.0",
+    "generated_at": "2026-09-21T22:00:27.058Z",
+    "target": "/Users/aymanmohammed/Desktop/Softdial",
+    "git": {
+      "commit": "12911cc",
+      "branch": "chore/repo-modernization",
+      "dirty": true
+    },
+    "tool": {
+      "name": "agent-brain",
+      "version": "0.1.0"
+    }
+  },
+  "data": {
+    "services": [
+      {
+        "name": ".brain",
+        "path": ".brain",
+        "kind": "service",
+        "package": null,
+        "language": "HTML",
+        "entrypoint": null,
+        "owner": null,
+        "doc": null,
+        "depends_on": [],
+        "depended_on_by": [],
+        "external": []
+      },
+      {
+        "name": "web",
+        "path": "apps/web",
+        "kind": "app",
+        "package": "@softdial/web",
+        "language": "TypeScript",
+        "entrypoint": null,
+        "owner": null,
+        "doc": null,
+        "depends_on": [],
+        "depended_on_by": [],
+        "external": []
+      },
+      {
+        "name": "supabase",
+        "path": "supabase",
+        "kind": "service",
+        "package": null,
+        "language": "TypeScript",
+        "entrypoint": null,
+        "owner": null,
+        "doc": null,
+        "depends_on": [],
+        "depended_on_by": [],
+        "external": []
+      }
+    ]
+  }
+}

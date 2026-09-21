@@ -1,0 +1,2591 @@
+{
+  "meta": {
+    "artifact": "knowledge-map",
+    "version": "1.0",
+    "generated_at": "2026-09-21T22:00:27.058Z",
+    "target": "/Users/aymanmohammed/Desktop/Softdial",
+    "git": {
+      "commit": "12911cc",
+      "branch": "chore/repo-modernization",
+      "dirty": true
+    },
+    "tool": {
+      "name": "agent-brain",
+      "version": "0.1.0"
+    }
+  },
+  "data": {
+    "nodes": [
+      {
+        "id": "arch.data-flows",
+        "path": ".brain/architecture/data-flows.md",
+        "title": "Data Flows",
+        "layer": "L2",
+        "type": "architecture",
+        "status": "canonical",
+        "owner": "maintainer",
+        "tokens_est": 1919,
+        "covers": "Runtime data movement: the dial loop, the realtime event stream, the store split, and the CSV import path",
+        "excludes": "Which module imports which (see arch.dependency-graph), per-domain rules (see .brain/domains/)",
+        "answers": [
+          "how does data move through the system",
+          "what happens when a call is answered",
+          "how does the UI know a call connected",
+          "what is stored in Redis versus Postgres",
+          "what events does the dialer emit",
+          "how is a CSV import processed"
+        ],
+        "populated": true
+      },
+      {
+        "id": "arch.dependency-graph",
+        "path": ".brain/architecture/dependency-graph.md",
+        "title": "Dependency Graph",
+        "layer": "L2",
+        "type": "architecture",
+        "status": "canonical",
+        "owner": "maintainer",
+        "tokens_est": 1626,
+        "covers": "Directed dependency edges, layering rules and their enforcement, change-impact analysis",
+        "excludes": "Runtime data movement (see arch.data-flows), per-function behaviour (see arch.service-map)",
+        "answers": [
+          "what depends on what",
+          "what breaks if I change this",
+          "can X import from Y",
+          "what is the blast radius of changing dialer-engine",
+          "which external packages matter"
+        ],
+        "populated": true
+      },
+      {
+        "id": "arch.service-map",
+        "path": ".brain/architecture/service-map.md",
+        "title": "Service Map",
+        "layer": "L2",
+        "type": "architecture",
+        "status": "canonical",
+        "owner": "maintainer",
+        "tokens_est": 1555,
+        "covers": "Every Edge Function: purpose, auth posture, dependencies, and risk",
+        "excludes": "Public URLs and deploy commands (see docs/reference/edge-functions.md), dial-loop internals (see domain.dialer)",
+        "answers": [
+          "what endpoints exist",
+          "which function handles X",
+          "which functions are authenticated",
+          "where do I add a new endpoint",
+          "which function is the biggest risk to change"
+        ],
+        "populated": true
+      },
+      {
+        "id": "arch.system-overview",
+        "path": ".brain/architecture/system-overview.md",
+        "title": "System Overview",
+        "layer": "L2",
+        "type": "architecture",
+        "status": "canonical",
+        "owner": "maintainer",
+        "tokens_est": 2080,
+        "covers": "Components, trust boundaries, the dial lifecycle end to end, external dependencies, and where new code belongs",
+        "excludes": "Per-function detail (see arch.service-map), import rules (see arch.dependency-graph), payload-level flows (see arch.data-flows), per-capability logic (see .brain/domains/)",
+        "answers": [
+          "what is the architecture",
+          "how does this system work",
+          "what are the components",
+          "where does a new feature belong",
+          "what external services does this depend on",
+          "why is there a Redis if there is already a Postgres"
+        ],
+        "populated": true
+      },
+      {
+        "id": "archive.csv-import-build-spec",
+        "path": ".brain/archive/2026-09-21-csv-import-build-spec.md",
+        "title": "CSV Import — Original Build Spec (Archived)",
+        "layer": "L5",
+        "type": "archive",
+        "status": "archived",
+        "owner": "maintainer",
+        "tokens_est": 2551,
+        "covers": "The original implementation prompt for the CSV import feature, preserved verbatim.",
+        "excludes": "How CSV import actually works today — see .brain/domains/contacts.md and docs/guides/csv-import.md.",
+        "answers": null,
+        "populated": true
+      },
+      {
+        "id": "ctx.product",
+        "path": "PRODUCT_CONTEXT.md",
+        "title": "Product Context",
+        "layer": "L2",
+        "type": "map",
+        "status": "draft",
+        "owner": "maintainer",
+        "tokens_est": 1203,
+        "covers": "Product intent, the user, and the metric the system exists to move",
+        "excludes": "Implementation (see arch.system-overview), per-capability behaviour (see .brain/domains/)",
+        "answers": [
+          "what does this product do",
+          "who is this for",
+          "what problem does it solve",
+          "what does success look like for a user"
+        ],
+        "populated": true
+      },
+      {
+        "id": "domain.analytics",
+        "path": ".brain/domains/analytics.md",
+        "title": "Analytics & Notifications",
+        "layer": "L2",
+        "type": "domain",
+        "status": "canonical",
+        "owner": "maintainer",
+        "tokens_est": 2746,
+        "covers": "The Dashboard metrics and team-performance chart, the call_events aggregation functions behind them, the Analytics screen's status, the weekly-summary job, and the in-app notification bell.",
+        "excludes": "The dial loop, AMD, and the call_logs state machine that actually records calls — see .brain/domains/dialer.md. Telnyx wiring — see .brain/domains/telephony.md.",
+        "answers": [
+          "is the Analytics screen real data or a mock",
+          "where do the Dashboard's Calls Today / Connect Rate / Talk Time numbers come from",
+          "what writes rows into call_events, and why are my dashboard metrics always zero",
+          "how is the weekly summary notification created and when",
+          "how are in-app notifications listed, counted and marked read",
+          "where is the dashboard chart date range stored",
+          "what is the difference between call_logs and call_events"
+        ],
+        "populated": true
+      },
+      {
+        "id": "domain.auth",
+        "path": ".brain/domains/auth.md",
+        "title": "Auth & Access Control",
+        "layer": "L2",
+        "type": "domain",
+        "status": "canonical",
+        "owner": "maintainer",
+        "tokens_est": 2342,
+        "covers": "Supabase auth, session handling, the two-layer Edge Function authorization model, service-role usage, and the per-table RLS inventory.",
+        "excludes": "Telnyx webhook signature mechanics (domain.telephony); dial-loop ownership checks (domain.dialer).",
+        "answers": [
+          "how is a user authenticated when calling an Edge Function",
+          "why is verify_jwt false on almost every function",
+          "which Edge Functions are actually unauthenticated",
+          "which tables have RLS and what do the policies allow",
+          "where does SUPABASE_SERVICE_ROLE_KEY bypass RLS",
+          "what user metadata is collected at signup"
+        ],
+        "populated": true
+      },
+      {
+        "id": "domain.campaigns",
+        "path": ".brain/domains/campaigns.md",
+        "title": "Campaigns",
+        "layer": "L2",
+        "type": "domain",
+        "status": "canonical",
+        "owner": "maintainer",
+        "tokens_est": 2585,
+        "covers": "The campaigns and campaign_leads tables, the campaigns_with_stats view, the campaign CRUD surface in the web client, and the handoff from a campaign to a parallel dial session.",
+        "excludes": "Contact records and CSV import mechanics (.brain/domains/contacts.md) and everything after the session row is inserted — batching, AMD, call_logs (.brain/domains/dialer.md).",
+        "answers": [
+          "what are the legal campaign status values and who changes them",
+          "is CampaignWithStats a live query or a cached column",
+          "why do queued / completed / passthrough counts never move",
+          "what does dialer-session-start actually receive from a campaign",
+          "why does Start Parallel Dial fail with 'No dialable contacts in campaign'",
+          "how are campaigns and campaign_leads scoped per user"
+        ],
+        "populated": true
+      },
+      {
+        "id": "domain.contacts",
+        "path": ".brain/domains/contacts.md",
+        "title": "Contacts",
+        "layer": "L2",
+        "type": "domain",
+        "status": "canonical",
+        "owner": "maintainer",
+        "tokens_est": 2237,
+        "covers": "The contacts table, two-step CSV import, phone normalisation and de-duplication, the category/contact_status labels, and single-contact create/delete.",
+        "excludes": "Per-call state (call_status, call_count, last_called_at) written by the dial loop — see domain.dialer. Campaign membership — see domain.campaigns.",
+        "answers": [
+          "what are the canonical contact fields and which one is required",
+          "why are CSV parse and import two separate requests",
+          "what exactly counts as a duplicate on import",
+          "what are the allowed values of category and contact_status",
+          "why does the 'Contacted' filter never match anything",
+          "what happens when part of an import fails"
+        ],
+        "populated": true
+      },
+      {
+        "id": "domain.dialer",
+        "path": ".brain/domains/dialer.md",
+        "title": "Parallel Dialer",
+        "layer": "L2",
+        "type": "domain",
+        "status": "canonical",
+        "owner": "maintainer",
+        "tokens_est": 2694,
+        "covers": "The dial-session engine: batching contacts onto N parallel Telnyx lines, AMD triage, human-answer race resolution, conference bridging, batch advance, and the live UI that mirrors it.",
+        "excludes": "Telnyx API wrappers, number purchase/search and WebRTC credentials (domain.telephony); campaign and lead list construction (domain.campaigns).",
+        "answers": [
+          "how does the dialer pick which answered call the agent talks to, and what counts as human",
+          "what Redis keys and TTLs does a dial session depend on",
+          "how does the dialer advance from one batch of lines to the next",
+          "why did a dial session stall, or calls_connected stay 0, or a webhook replay break it",
+          "what does PARALLEL_DIALER_ENABLED actually gate"
+        ],
+        "populated": true
+      },
+      {
+        "id": "domain.telephony",
+        "path": ".brain/domains/telephony.md",
+        "title": "Telephony",
+        "layer": "L2",
+        "type": "domain",
+        "status": "canonical",
+        "owner": "maintainer",
+        "tokens_est": 3092,
+        "covers": "Telnyx account wiring (API key, the two connection IDs, webhook auth), phone-number search/purchase/listing, and the agent's WebRTC browser leg.",
+        "excludes": "The parallel dial loop itself — batching, AMD, call_logs state machine, Redis session state — see .brain/domains/dialer.md.",
+        "answers": [
+          "which Telnyx connection ID goes in which env var",
+          "why does dialing fail with TELNYX_CONNECTION_REJECTED / INVALID_TELNYX_CONNECTION",
+          "how is a WebRTC token minted for the agent's browser",
+          "why is telnyx-webhook deployed with --no-verify-jwt",
+          "how is the Telnyx webhook signature verified, and when does it fail open",
+          "how does a user buy a phone number and where is it stored",
+          "how does the agent's leg join the conference",
+          "what legacy Telnyx env var names are still honoured"
+        ],
+        "populated": true
+      },
+      {
+        "id": "gov.contribution-protocol",
+        "path": ".brain/governance/contribution-protocol.md",
+        "title": "Contribution Protocol",
+        "layer": "L2",
+        "type": "governance",
+        "status": "canonical",
+        "owner": "unassigned",
+        "tokens_est": 1047,
+        "covers": "What .brain doc to update for a given change type, agent-specific update rules, the CI gate",
+        "excludes": "How to write a .brain document (see gov.documentation-standards), when a document should be archived (see gov.knowledge-lifecycle)",
+        "answers": [
+          "what do I update when I change code",
+          "how do I keep the brain current"
+        ],
+        "populated": true
+      },
+      {
+        "id": "gov.documentation-standards",
+        "path": ".brain/governance/documentation-standards.md",
+        "title": "Documentation Standards",
+        "layer": "L2",
+        "type": "governance",
+        "status": "canonical",
+        "owner": "unassigned",
+        "tokens_est": 1290,
+        "covers": "Where knowledge belongs by layer, frontmatter schema, writing and review rules",
+        "excludes": "When to update a doc after a code change (see gov.contribution-protocol), when a doc retires (see gov.knowledge-lifecycle)",
+        "answers": [
+          "how do I write a .brain document",
+          "where does this piece of knowledge belong",
+          "what frontmatter is required"
+        ],
+        "populated": false
+      },
+      {
+        "id": "gov.knowledge-lifecycle",
+        "path": ".brain/governance/knowledge-lifecycle.md",
+        "title": "Knowledge Lifecycle",
+        "layer": "L2",
+        "type": "governance",
+        "status": "canonical",
+        "owner": "unassigned",
+        "tokens_est": 1133,
+        "covers": "Review cadence, drift handling, archiving and deletion rules",
+        "excludes": "What to update on a code change (see gov.contribution-protocol), authoring/frontmatter rules (see gov.documentation-standards)",
+        "answers": [
+          "when should a document be archived",
+          "how often is knowledge reviewed",
+          "what do I do about a drifted document"
+        ],
+        "populated": true
+      },
+      {
+        "id": "gov.ownership",
+        "path": ".brain/governance/ownership.md",
+        "title": "Ownership",
+        "layer": "L2",
+        "type": "governance",
+        "status": "canonical",
+        "owner": "maintainer",
+        "tokens_est": 761,
+        "covers": "Ownership of areas of this repository",
+        "excludes": "How to contribute (see gov.contribution-protocol), what code lives where (see map.repository)",
+        "answers": [
+          "who owns what",
+          "who should review this change",
+          "who do I ask about the dialer"
+        ],
+        "populated": true
+      },
+      {
+        "id": "gov.tool-output-policy",
+        "path": ".brain/governance/tool-output-policy.md",
+        "title": "Tool Output Policy",
+        "layer": "L2",
+        "type": "governance",
+        "status": "canonical",
+        "owner": "unassigned",
+        "tokens_est": 1059,
+        "covers": "Token-expensive commands, safe defaults, destructive-command rules, containment-tool interaction",
+        "excludes": "Which containment tools are actually enabled here (see tool.optimization-registry)",
+        "answers": [
+          "how do I keep tool output from flooding context",
+          "what commands are safe to run"
+        ],
+        "populated": true
+      },
+      {
+        "id": "map.repository",
+        "path": "REPOSITORY_MAP.md",
+        "title": "Repository Map",
+        "layer": "L2",
+        "type": "map",
+        "status": "canonical",
+        "owner": "maintainer",
+        "tokens_est": 1489,
+        "covers": "Directory-by-directory map of the repository and which L2 document covers each area",
+        "excludes": "How subsystems work (see .brain/domains/), architecture (see arch.system-overview)",
+        "answers": [
+          "where does feature X live",
+          "where is the code for the dialer",
+          "what is in this directory",
+          "where do I put a new component",
+          "where are the migrations"
+        ],
+        "populated": true
+      },
+      {
+        "id": "mem.active-work",
+        "path": ".brain/memory/active-work.md",
+        "title": "Active Work",
+        "layer": "L2",
+        "type": "memory",
+        "status": "canonical",
+        "owner": "maintainer",
+        "tokens_est": 933,
+        "covers": "Work in progress and the near-term backlog",
+        "excludes": "Shipped decisions (see mem.decisions), defects in shipped behaviour (see mem.known-issues)",
+        "answers": [
+          "what is in flight",
+          "what is being worked on",
+          "what is the current backlog",
+          "what should I pick up next"
+        ],
+        "populated": true
+      },
+      {
+        "id": "mem.decisions",
+        "path": ".brain/memory/decisions.md",
+        "title": "Decisions",
+        "layer": "L2",
+        "type": "memory",
+        "status": "canonical",
+        "owner": "maintainer",
+        "tokens_est": 2102,
+        "covers": "Decisions made, alternatives considered, what superseded what",
+        "excludes": "Work in progress (see mem.active-work), currently-broken behaviour (see mem.known-issues)",
+        "answers": [
+          "why was X chosen",
+          "why do we do it this way",
+          "was Y considered",
+          "why is there a Redis and a Postgres",
+          "why is the webhook unauthenticated",
+          "why is components/ui not formatted"
+        ],
+        "populated": true
+      },
+      {
+        "id": "mem.known-issues",
+        "path": ".brain/memory/known-issues.md",
+        "title": "Known Issues",
+        "layer": "L2",
+        "type": "memory",
+        "status": "canonical",
+        "owner": "maintainer",
+        "tokens_est": 2494,
+        "covers": "Known defects, traps, and behaviour that looks intentional but is not",
+        "excludes": "Planned work (see mem.active-work), deliberate design choices (see mem.decisions)",
+        "answers": [
+          "what is broken",
+          "what are the known issues",
+          "why is this behaving strangely",
+          "is the analytics screen real",
+          "what should I not trust"
+        ],
+        "populated": true
+      },
+      {
+        "id": "mem.lessons",
+        "path": ".brain/memory/lessons.md",
+        "title": "Lessons",
+        "layer": "L2",
+        "type": "memory",
+        "status": "canonical",
+        "owner": "maintainer",
+        "tokens_est": 1164,
+        "covers": "Non-obvious things learned from working in this repository",
+        "excludes": "Current defects (see mem.known-issues), the reasoning behind choices (see mem.decisions)",
+        "answers": [
+          "what have we learned the hard way",
+          "what mistakes should I avoid here",
+          "what is surprising about this codebase",
+          "what did previous work get wrong"
+        ],
+        "populated": true
+      },
+      {
+        "id": "meta.agents-readme",
+        "path": ".brain/agents/README.md",
+        "title": "Agents (Reserved)",
+        "layer": "L2",
+        "type": "meta",
+        "status": "canonical",
+        "owner": "unassigned",
+        "tokens_est": 617,
+        "covers": "Why agent role definitions aren't installed, what's preserved from existing agent configs",
+        "excludes": "Who owns which area of the codebase (see gov.ownership)",
+        "answers": null,
+        "populated": true
+      },
+      {
+        "id": "meta.archive-readme",
+        "path": ".brain/archive/README.md",
+        "title": "Archive",
+        "layer": "L2",
+        "type": "meta",
+        "status": "canonical",
+        "owner": "unassigned",
+        "tokens_est": 605,
+        "covers": "Why documents get archived, the rules for L5 content, what's currently archived",
+        "excludes": "Whether a specific document should be archived now (see gov.knowledge-lifecycle)",
+        "answers": [
+          "where did the old documentation go",
+          "what did this used to look like"
+        ],
+        "populated": true
+      },
+      {
+        "id": "meta.brain-readme",
+        "path": ".brain/README.md",
+        "title": "The .brain Directory",
+        "layer": "L2",
+        "type": "meta",
+        "status": "canonical",
+        "owner": "unassigned",
+        "tokens_est": 1962,
+        "covers": "Index of the whole knowledge base, how to use it, rules for keeping it true",
+        "excludes": "The content of any single domain or architecture document (see that document itself)",
+        "answers": [
+          "what is the .brain directory",
+          "where does knowledge live"
+        ],
+        "populated": true
+      },
+      {
+        "id": "meta.domains-readme",
+        "path": ".brain/domains/README.md",
+        "title": "Domains",
+        "layer": "L2",
+        "type": "meta",
+        "status": "canonical",
+        "owner": "unassigned",
+        "tokens_est": 859,
+        "covers": "What qualifies as a domain, how to write one, shared vs. local domain content",
+        "excludes": "The domains themselves (see each domain's own .brain/domains/*.md)",
+        "answers": [
+          "what business domains exist",
+          "which domain owns X"
+        ],
+        "populated": true
+      },
+      {
+        "id": "meta.indexes-readme",
+        "path": ".brain/indexes/README.md",
+        "title": "Indexes",
+        "layer": "L2",
+        "type": "meta",
+        "status": "canonical",
+        "owner": "unassigned",
+        "tokens_est": 779,
+        "covers": "What each generated index file is for, how to regenerate, why not to hand-edit",
+        "excludes": "How to write the .brain documents the indexes are built from (see gov.documentation-standards)",
+        "answers": [
+          "what are the indexes for",
+          "where is symbol X defined",
+          "can I edit the index files"
+        ],
+        "populated": true
+      },
+      {
+        "id": "tool.integrations",
+        "path": ".brain/tooling/integrations.md",
+        "title": "Integrations",
+        "layer": "L2",
+        "type": "tooling",
+        "status": "canonical",
+        "owner": "maintainer",
+        "tokens_est": 1204,
+        "covers": "Every external service this system depends on, how it is configured, and how it fails",
+        "excludes": "Commands (see tool.registry), Telnyx call semantics (see domain.telephony), variable-by-variable detail (see docs/reference/environment-variables.md)",
+        "answers": [
+          "what external services does this use",
+          "where do I configure Telnyx",
+          "what happens if Redis goes down",
+          "what third-party accounts do I need",
+          "where is the Telnyx API reference"
+        ],
+        "populated": true
+      },
+      {
+        "id": "tool.mcp-registry",
+        "path": ".brain/tooling/mcp-registry.md",
+        "title": "MCP Registry",
+        "layer": "L2",
+        "type": "tooling",
+        "status": "canonical",
+        "owner": "unassigned",
+        "tokens_est": 533,
+        "covers": "Which MCP servers are available, what each is for, rules for agents using them",
+        "excludes": "External services not exposed via MCP (see tool.integrations), token-optimization tooling (see tool.optimization-registry)",
+        "answers": [
+          "what MCP servers are available",
+          "should I use the database MCP for this",
+          "how do I access X"
+        ],
+        "populated": true
+      },
+      {
+        "id": "tool.optimization-registry",
+        "path": ".brain/tooling/optimization-registry.md",
+        "title": "Token Optimization Registry",
+        "layer": "L2",
+        "type": "tooling",
+        "status": "canonical",
+        "owner": "unassigned",
+        "tokens_est": 1253,
+        "covers": "Which containment/optimization tools are enabled, per-tool record, integration checklist",
+        "excludes": "MCP servers (see tool.mcp-registry), general tool-output safety rules (see gov.tool-output-policy)",
+        "answers": [
+          "what token optimization tools are enabled",
+          "should I use a containment tool here",
+          "how do I turn optimization tooling on or off"
+        ],
+        "populated": true
+      },
+      {
+        "id": "tool.registry",
+        "path": ".brain/tooling/registry.md",
+        "title": "Command Registry",
+        "layer": "L2",
+        "type": "tooling",
+        "status": "canonical",
+        "owner": "maintainer",
+        "tokens_est": 1064,
+        "covers": "Every command needed to develop, verify, and deploy this repository",
+        "excludes": "External service configuration (see tool.integrations), environment variables (see docs/reference/environment-variables.md)",
+        "answers": [
+          "how do I run this",
+          "how do I build this",
+          "what commands exist",
+          "how do I deploy",
+          "how do I apply a migration",
+          "how do I run the checks before pushing"
+        ],
+        "populated": true
+      }
+    ],
+    "edges": [
+      {
+        "from": "meta.brain-readme",
+        "to": "arch.system-overview",
+        "kind": "links"
+      },
+      {
+        "from": "meta.brain-readme",
+        "to": "arch.dependency-graph",
+        "kind": "links"
+      },
+      {
+        "from": "meta.brain-readme",
+        "to": "arch.service-map",
+        "kind": "links"
+      },
+      {
+        "from": "meta.brain-readme",
+        "to": "arch.data-flows",
+        "kind": "links"
+      },
+      {
+        "from": "meta.brain-readme",
+        "to": "meta.domains-readme",
+        "kind": "links"
+      },
+      {
+        "from": "meta.brain-readme",
+        "to": "domain.dialer",
+        "kind": "links"
+      },
+      {
+        "from": "meta.brain-readme",
+        "to": "domain.telephony",
+        "kind": "links"
+      },
+      {
+        "from": "meta.brain-readme",
+        "to": "domain.contacts",
+        "kind": "links"
+      },
+      {
+        "from": "meta.brain-readme",
+        "to": "domain.campaigns",
+        "kind": "links"
+      },
+      {
+        "from": "meta.brain-readme",
+        "to": "domain.auth",
+        "kind": "links"
+      },
+      {
+        "from": "meta.brain-readme",
+        "to": "domain.analytics",
+        "kind": "links"
+      },
+      {
+        "from": "meta.brain-readme",
+        "to": "mem.decisions",
+        "kind": "links"
+      },
+      {
+        "from": "meta.brain-readme",
+        "to": "mem.known-issues",
+        "kind": "links"
+      },
+      {
+        "from": "meta.brain-readme",
+        "to": "mem.lessons",
+        "kind": "links"
+      },
+      {
+        "from": "meta.brain-readme",
+        "to": "mem.active-work",
+        "kind": "links"
+      },
+      {
+        "from": "meta.brain-readme",
+        "to": "gov.contribution-protocol",
+        "kind": "links"
+      },
+      {
+        "from": "meta.brain-readme",
+        "to": "gov.documentation-standards",
+        "kind": "links"
+      },
+      {
+        "from": "meta.brain-readme",
+        "to": "gov.knowledge-lifecycle",
+        "kind": "links"
+      },
+      {
+        "from": "meta.brain-readme",
+        "to": "gov.ownership",
+        "kind": "links"
+      },
+      {
+        "from": "meta.brain-readme",
+        "to": "gov.tool-output-policy",
+        "kind": "links"
+      },
+      {
+        "from": "meta.brain-readme",
+        "to": "tool.registry",
+        "kind": "links"
+      },
+      {
+        "from": "meta.brain-readme",
+        "to": "tool.integrations",
+        "kind": "links"
+      },
+      {
+        "from": "meta.brain-readme",
+        "to": "tool.mcp-registry",
+        "kind": "links"
+      },
+      {
+        "from": "meta.brain-readme",
+        "to": "tool.optimization-registry",
+        "kind": "links"
+      },
+      {
+        "from": "meta.brain-readme",
+        "to": "meta.indexes-readme",
+        "kind": "links"
+      },
+      {
+        "from": "meta.brain-readme",
+        "to": "meta.archive-readme",
+        "kind": "links"
+      },
+      {
+        "from": "meta.brain-readme",
+        "to": "meta.agents-readme",
+        "kind": "links"
+      },
+      {
+        "from": "meta.agents-readme",
+        "to": "gov.documentation-standards",
+        "kind": "links"
+      },
+      {
+        "from": "arch.data-flows",
+        "to": "arch.system-overview",
+        "kind": "related"
+      },
+      {
+        "from": "arch.data-flows",
+        "to": "arch.dependency-graph",
+        "kind": "related"
+      },
+      {
+        "from": "arch.data-flows",
+        "to": "domain.dialer",
+        "kind": "related"
+      },
+      {
+        "from": "arch.data-flows",
+        "to": "supabase/functions/_shared/dialer-engine.ts",
+        "kind": "sources"
+      },
+      {
+        "from": "arch.data-flows",
+        "to": "supabase/functions/_shared/dialer-events.ts",
+        "kind": "sources"
+      },
+      {
+        "from": "arch.data-flows",
+        "to": "supabase/functions/_shared/redis.ts",
+        "kind": "sources"
+      },
+      {
+        "from": "arch.data-flows",
+        "to": "supabase/functions/telnyx-webhook/index.ts",
+        "kind": "sources"
+      },
+      {
+        "from": "arch.data-flows",
+        "to": "apps/web/src/hooks/useDialerSession.ts",
+        "kind": "sources"
+      },
+      {
+        "from": "arch.dependency-graph",
+        "to": "arch.system-overview",
+        "kind": "related"
+      },
+      {
+        "from": "arch.dependency-graph",
+        "to": "arch.service-map",
+        "kind": "related"
+      },
+      {
+        "from": "arch.dependency-graph",
+        "to": "apps/web/src/**",
+        "kind": "sources"
+      },
+      {
+        "from": "arch.dependency-graph",
+        "to": "supabase/functions/**",
+        "kind": "sources"
+      },
+      {
+        "from": "arch.dependency-graph",
+        "to": "package.json",
+        "kind": "sources"
+      },
+      {
+        "from": "arch.dependency-graph",
+        "to": "apps/web/package.json",
+        "kind": "sources"
+      },
+      {
+        "from": "arch.dependency-graph",
+        "to": "mem.decisions",
+        "kind": "links"
+      },
+      {
+        "from": "arch.service-map",
+        "to": "arch.system-overview",
+        "kind": "related"
+      },
+      {
+        "from": "arch.service-map",
+        "to": "arch.dependency-graph",
+        "kind": "related"
+      },
+      {
+        "from": "arch.service-map",
+        "to": "domain.auth",
+        "kind": "related"
+      },
+      {
+        "from": "arch.service-map",
+        "to": "supabase/functions/**",
+        "kind": "sources"
+      },
+      {
+        "from": "arch.service-map",
+        "to": "supabase/config.toml",
+        "kind": "sources"
+      },
+      {
+        "from": "arch.system-overview",
+        "to": "arch.dependency-graph",
+        "kind": "related"
+      },
+      {
+        "from": "arch.system-overview",
+        "to": "arch.data-flows",
+        "kind": "related"
+      },
+      {
+        "from": "arch.system-overview",
+        "to": "arch.service-map",
+        "kind": "related"
+      },
+      {
+        "from": "arch.system-overview",
+        "to": "map.repository",
+        "kind": "related"
+      },
+      {
+        "from": "arch.system-overview",
+        "to": "apps/web/src/**",
+        "kind": "sources"
+      },
+      {
+        "from": "arch.system-overview",
+        "to": "supabase/functions/**",
+        "kind": "sources"
+      },
+      {
+        "from": "arch.system-overview",
+        "to": "supabase/migrations/**",
+        "kind": "sources"
+      },
+      {
+        "from": "arch.system-overview",
+        "to": "domain.dialer",
+        "kind": "links"
+      },
+      {
+        "from": "archive.csv-import-build-spec",
+        "to": "domain.contacts",
+        "kind": "related"
+      },
+      {
+        "from": "archive.csv-import-build-spec",
+        "to": "domain.contacts",
+        "kind": "links"
+      },
+      {
+        "from": "meta.archive-readme",
+        "to": "archive.csv-import-build-spec",
+        "kind": "links"
+      },
+      {
+        "from": "meta.domains-readme",
+        "to": "domain.dialer",
+        "kind": "links"
+      },
+      {
+        "from": "meta.domains-readme",
+        "to": "domain.telephony",
+        "kind": "links"
+      },
+      {
+        "from": "meta.domains-readme",
+        "to": "domain.contacts",
+        "kind": "links"
+      },
+      {
+        "from": "meta.domains-readme",
+        "to": "domain.campaigns",
+        "kind": "links"
+      },
+      {
+        "from": "meta.domains-readme",
+        "to": "domain.auth",
+        "kind": "links"
+      },
+      {
+        "from": "meta.domains-readme",
+        "to": "domain.analytics",
+        "kind": "links"
+      },
+      {
+        "from": "domain.analytics",
+        "to": "domain.dialer",
+        "kind": "related"
+      },
+      {
+        "from": "domain.analytics",
+        "to": "domain.auth",
+        "kind": "related"
+      },
+      {
+        "from": "domain.analytics",
+        "to": "arch.system-overview",
+        "kind": "related"
+      },
+      {
+        "from": "domain.analytics",
+        "to": "supabase/functions/dashboard-stats/index.ts",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.analytics",
+        "to": "supabase/functions/team-performance/index.ts",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.analytics",
+        "to": "supabase/functions/ensure-week-summary/index.ts",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.analytics",
+        "to": "supabase/migrations/20250213000001_create_call_events_and_notifications.sql",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.analytics",
+        "to": "apps/web/src/components/Dashboard.tsx",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.analytics",
+        "to": "apps/web/src/components/Analytics.tsx",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.analytics",
+        "to": "apps/web/src/components/TopNavigation.tsx",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.analytics",
+        "to": "domain.dialer",
+        "kind": "links"
+      },
+      {
+        "from": "domain.analytics",
+        "to": "domain.telephony",
+        "kind": "links"
+      },
+      {
+        "from": "domain.analytics",
+        "to": "domain.auth",
+        "kind": "links"
+      },
+      {
+        "from": "domain.auth",
+        "to": "domain.dialer",
+        "kind": "related"
+      },
+      {
+        "from": "domain.auth",
+        "to": "domain.contacts",
+        "kind": "related"
+      },
+      {
+        "from": "domain.auth",
+        "to": "arch.system-overview",
+        "kind": "related"
+      },
+      {
+        "from": "domain.auth",
+        "to": "supabase/functions/_shared/auth.ts",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.auth",
+        "to": "supabase/functions/_shared/cors.ts",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.auth",
+        "to": "supabase/config.toml",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.auth",
+        "to": "supabase/migrations/*.sql",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.auth",
+        "to": "apps/web/src/contexts/AuthContext.tsx",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.auth",
+        "to": "apps/web/src/components/AuthScreen.tsx",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.auth",
+        "to": "mem.known-issues",
+        "kind": "links"
+      },
+      {
+        "from": "domain.auth",
+        "to": "domain.telephony",
+        "kind": "links"
+      },
+      {
+        "from": "domain.auth",
+        "to": "domain.dialer",
+        "kind": "links"
+      },
+      {
+        "from": "domain.auth",
+        "to": "domain.contacts",
+        "kind": "links"
+      },
+      {
+        "from": "domain.campaigns",
+        "to": "domain.contacts",
+        "kind": "related"
+      },
+      {
+        "from": "domain.campaigns",
+        "to": "domain.dialer",
+        "kind": "related"
+      },
+      {
+        "from": "domain.campaigns",
+        "to": "arch.system-overview",
+        "kind": "related"
+      },
+      {
+        "from": "domain.campaigns",
+        "to": "apps/web/src/components/Campaigns.tsx",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.campaigns",
+        "to": "apps/web/src/components/campaigns/**",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.campaigns",
+        "to": "apps/web/src/lib/api.ts",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.campaigns",
+        "to": "supabase/migrations/20250207100000_create_campaigns_and_leads.sql",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.campaigns",
+        "to": "supabase/functions/dialer-session-start/index.ts",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.campaigns",
+        "to": "domain.contacts",
+        "kind": "links"
+      },
+      {
+        "from": "domain.campaigns",
+        "to": "domain.dialer",
+        "kind": "links"
+      },
+      {
+        "from": "domain.campaigns",
+        "to": "domain.telephony",
+        "kind": "links"
+      },
+      {
+        "from": "domain.campaigns",
+        "to": "domain.auth",
+        "kind": "links"
+      },
+      {
+        "from": "domain.contacts",
+        "to": "domain.campaigns",
+        "kind": "related"
+      },
+      {
+        "from": "domain.contacts",
+        "to": "domain.auth",
+        "kind": "related"
+      },
+      {
+        "from": "domain.contacts",
+        "to": "arch.system-overview",
+        "kind": "related"
+      },
+      {
+        "from": "domain.contacts",
+        "to": "supabase/functions/contacts-parse-csv/index.ts",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.contacts",
+        "to": "supabase/functions/contacts-import/index.ts",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.contacts",
+        "to": "apps/web/src/components/Contacts.tsx",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.contacts",
+        "to": "apps/web/src/components/contacts/*.tsx",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.contacts",
+        "to": "apps/web/src/lib/api.ts",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.contacts",
+        "to": "supabase/migrations/*.sql",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.contacts",
+        "to": "domain.dialer",
+        "kind": "links"
+      },
+      {
+        "from": "domain.contacts",
+        "to": "domain.campaigns",
+        "kind": "links"
+      },
+      {
+        "from": "domain.contacts",
+        "to": "domain.auth",
+        "kind": "links"
+      },
+      {
+        "from": "domain.dialer",
+        "to": "domain.telephony",
+        "kind": "related"
+      },
+      {
+        "from": "domain.dialer",
+        "to": "domain.campaigns",
+        "kind": "related"
+      },
+      {
+        "from": "domain.dialer",
+        "to": "arch.system-overview",
+        "kind": "related"
+      },
+      {
+        "from": "domain.dialer",
+        "to": "supabase/functions/_shared/**",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.dialer",
+        "to": "supabase/functions/dialer-session-*/**",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.dialer",
+        "to": "supabase/functions/telnyx-webhook/**",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.dialer",
+        "to": "apps/web/src/hooks/useDialerSession.ts",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.dialer",
+        "to": "apps/web/src/components/dialer/**",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.dialer",
+        "to": "supabase/migrations/**",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.dialer",
+        "to": "domain.telephony",
+        "kind": "links"
+      },
+      {
+        "from": "domain.dialer",
+        "to": "domain.campaigns",
+        "kind": "links"
+      },
+      {
+        "from": "domain.dialer",
+        "to": "arch.system-overview",
+        "kind": "links"
+      },
+      {
+        "from": "domain.telephony",
+        "to": "domain.dialer",
+        "kind": "related"
+      },
+      {
+        "from": "domain.telephony",
+        "to": "domain.auth",
+        "kind": "related"
+      },
+      {
+        "from": "domain.telephony",
+        "to": "arch.system-overview",
+        "kind": "related"
+      },
+      {
+        "from": "domain.telephony",
+        "to": "supabase/functions/_shared/telnyx.ts",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.telephony",
+        "to": "supabase/functions/telnyx-*/index.ts",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.telephony",
+        "to": "supabase/migrations/20250208000001_create_user_phone_numbers.sql",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.telephony",
+        "to": "apps/web/src/lib/useTelnyxCall.ts",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.telephony",
+        "to": "apps/web/src/contexts/PhoneNumbersContext.tsx",
+        "kind": "sources"
+      },
+      {
+        "from": "domain.telephony",
+        "to": "domain.dialer",
+        "kind": "links"
+      },
+      {
+        "from": "gov.contribution-protocol",
+        "to": "arch.service-map",
+        "kind": "links"
+      },
+      {
+        "from": "gov.contribution-protocol",
+        "to": "map.repository",
+        "kind": "links"
+      },
+      {
+        "from": "gov.contribution-protocol",
+        "to": "arch.dependency-graph",
+        "kind": "links"
+      },
+      {
+        "from": "gov.contribution-protocol",
+        "to": "arch.data-flows",
+        "kind": "links"
+      },
+      {
+        "from": "gov.contribution-protocol",
+        "to": "mem.decisions",
+        "kind": "links"
+      },
+      {
+        "from": "gov.contribution-protocol",
+        "to": "mem.known-issues",
+        "kind": "links"
+      },
+      {
+        "from": "gov.contribution-protocol",
+        "to": "mem.lessons",
+        "kind": "links"
+      },
+      {
+        "from": "gov.contribution-protocol",
+        "to": "mem.active-work",
+        "kind": "links"
+      },
+      {
+        "from": "gov.contribution-protocol",
+        "to": "tool.registry",
+        "kind": "links"
+      },
+      {
+        "from": "gov.contribution-protocol",
+        "to": "gov.ownership",
+        "kind": "links"
+      },
+      {
+        "from": "gov.documentation-standards",
+        "to": "mem.decisions",
+        "kind": "links"
+      },
+      {
+        "from": "gov.documentation-standards",
+        "to": "mem.known-issues",
+        "kind": "links"
+      },
+      {
+        "from": "gov.documentation-standards",
+        "to": "mem.lessons",
+        "kind": "links"
+      },
+      {
+        "from": "gov.documentation-standards",
+        "to": "mem.active-work",
+        "kind": "links"
+      },
+      {
+        "from": "gov.knowledge-lifecycle",
+        "to": "gov.documentation-standards",
+        "kind": "links"
+      },
+      {
+        "from": "gov.knowledge-lifecycle",
+        "to": "mem.active-work",
+        "kind": "links"
+      },
+      {
+        "from": "gov.knowledge-lifecycle",
+        "to": "mem.known-issues",
+        "kind": "links"
+      },
+      {
+        "from": "gov.knowledge-lifecycle",
+        "to": "mem.decisions",
+        "kind": "links"
+      },
+      {
+        "from": "gov.knowledge-lifecycle",
+        "to": "meta.archive-readme",
+        "kind": "links"
+      },
+      {
+        "from": "gov.ownership",
+        "to": "gov.contribution-protocol",
+        "kind": "related"
+      },
+      {
+        "from": "gov.ownership",
+        "to": "map.repository",
+        "kind": "related"
+      },
+      {
+        "from": "gov.ownership",
+        "to": "mem.decisions",
+        "kind": "links"
+      },
+      {
+        "from": "gov.tool-output-policy",
+        "to": "map.repository",
+        "kind": "links"
+      },
+      {
+        "from": "gov.tool-output-policy",
+        "to": "tool.optimization-registry",
+        "kind": "links"
+      },
+      {
+        "from": "meta.indexes-readme",
+        "to": "map.repository",
+        "kind": "links"
+      },
+      {
+        "from": "mem.active-work",
+        "to": "mem.known-issues",
+        "kind": "related"
+      },
+      {
+        "from": "mem.active-work",
+        "to": "domain.contacts",
+        "kind": "related"
+      },
+      {
+        "from": "mem.active-work",
+        "to": "domain.campaigns",
+        "kind": "related"
+      },
+      {
+        "from": "mem.active-work",
+        "to": "mem.known-issues",
+        "kind": "links"
+      },
+      {
+        "from": "mem.active-work",
+        "to": "ctx.product",
+        "kind": "links"
+      },
+      {
+        "from": "mem.decisions",
+        "to": "arch.system-overview",
+        "kind": "related"
+      },
+      {
+        "from": "mem.decisions",
+        "to": "mem.known-issues",
+        "kind": "related"
+      },
+      {
+        "from": "mem.known-issues",
+        "to": "mem.active-work",
+        "kind": "related"
+      },
+      {
+        "from": "mem.known-issues",
+        "to": "mem.decisions",
+        "kind": "related"
+      },
+      {
+        "from": "mem.known-issues",
+        "to": "domain.analytics",
+        "kind": "related"
+      },
+      {
+        "from": "mem.known-issues",
+        "to": "domain.dialer",
+        "kind": "links"
+      },
+      {
+        "from": "mem.lessons",
+        "to": "mem.known-issues",
+        "kind": "related"
+      },
+      {
+        "from": "mem.lessons",
+        "to": "mem.decisions",
+        "kind": "related"
+      },
+      {
+        "from": "tool.integrations",
+        "to": "tool.registry",
+        "kind": "related"
+      },
+      {
+        "from": "tool.integrations",
+        "to": "domain.telephony",
+        "kind": "related"
+      },
+      {
+        "from": "tool.integrations",
+        "to": "arch.system-overview",
+        "kind": "related"
+      },
+      {
+        "from": "tool.integrations",
+        "to": "supabase/functions/_shared/**",
+        "kind": "sources"
+      },
+      {
+        "from": "tool.integrations",
+        "to": "apps/web/src/lib/**",
+        "kind": "sources"
+      },
+      {
+        "from": "tool.integrations",
+        "to": "mem.known-issues",
+        "kind": "links"
+      },
+      {
+        "from": "tool.optimization-registry",
+        "to": "gov.tool-output-policy",
+        "kind": "links"
+      },
+      {
+        "from": "tool.registry",
+        "to": "tool.integrations",
+        "kind": "related"
+      },
+      {
+        "from": "tool.registry",
+        "to": "gov.tool-output-policy",
+        "kind": "related"
+      },
+      {
+        "from": "tool.registry",
+        "to": "package.json",
+        "kind": "sources"
+      },
+      {
+        "from": "tool.registry",
+        "to": "apps/web/package.json",
+        "kind": "sources"
+      },
+      {
+        "from": "ctx.product",
+        "to": "arch.system-overview",
+        "kind": "related"
+      },
+      {
+        "from": "ctx.product",
+        "to": "domain.dialer",
+        "kind": "related"
+      },
+      {
+        "from": "ctx.product",
+        "to": "mem.active-work",
+        "kind": "links"
+      },
+      {
+        "from": "map.repository",
+        "to": "arch.system-overview",
+        "kind": "related"
+      },
+      {
+        "from": "map.repository",
+        "to": "arch.service-map",
+        "kind": "related"
+      },
+      {
+        "from": "map.repository",
+        "to": "meta.brain-readme",
+        "kind": "links"
+      }
+    ],
+    "routes": [
+      {
+        "question": "can I edit the index files",
+        "id": "meta.indexes-readme",
+        "tokens_est": 779,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "can X import from Y",
+        "id": "arch.dependency-graph",
+        "tokens_est": 1626,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "how are campaigns and campaign_leads scoped per user",
+        "id": "domain.campaigns",
+        "tokens_est": 2585,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "how are in-app notifications listed, counted and marked read",
+        "id": "domain.analytics",
+        "tokens_est": 2746,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "how do I access X",
+        "id": "tool.mcp-registry",
+        "tokens_est": 533,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "how do I apply a migration",
+        "id": "tool.registry",
+        "tokens_est": 1064,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "how do I build this",
+        "id": "tool.registry",
+        "tokens_est": 1064,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "how do I deploy",
+        "id": "tool.registry",
+        "tokens_est": 1064,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "how do I keep the brain current",
+        "id": "gov.contribution-protocol",
+        "tokens_est": 1047,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "how do I keep tool output from flooding context",
+        "id": "gov.tool-output-policy",
+        "tokens_est": 1059,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "how do I run the checks before pushing",
+        "id": "tool.registry",
+        "tokens_est": 1064,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "how do I run this",
+        "id": "tool.registry",
+        "tokens_est": 1064,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "how do I turn optimization tooling on or off",
+        "id": "tool.optimization-registry",
+        "tokens_est": 1253,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "how do I wire brain verify into CI",
+        "id": "gov.contribution-protocol",
+        "tokens_est": 66,
+        "kind": "section",
+        "anchor": "ci-gate"
+      },
+      {
+        "question": "how do I write a .brain document",
+        "id": "gov.documentation-standards",
+        "tokens_est": 1290,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "how does a user buy a phone number and where is it stored",
+        "id": "domain.telephony",
+        "tokens_est": 3092,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "how does data move through the system",
+        "id": "arch.data-flows",
+        "tokens_est": 1919,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "how does the UI know a call connected",
+        "id": "arch.data-flows",
+        "tokens_est": 1919,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "how does the agent's leg join the conference",
+        "id": "domain.telephony",
+        "tokens_est": 3092,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "how does the dialer advance from one batch of lines to the next",
+        "id": "domain.dialer",
+        "tokens_est": 2694,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "how does the dialer pick which answered call the agent talks to, and what counts as human",
+        "id": "domain.dialer",
+        "tokens_est": 2694,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "how does this system work",
+        "id": "arch.system-overview",
+        "tokens_est": 2080,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "how is a CSV import processed",
+        "id": "arch.data-flows",
+        "tokens_est": 1919,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "how is a WebRTC token minted for the agent's browser",
+        "id": "domain.telephony",
+        "tokens_est": 3092,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "how is a user authenticated when calling an Edge Function",
+        "id": "domain.auth",
+        "tokens_est": 2342,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "how is the Telnyx webhook signature verified, and when does it fail open",
+        "id": "domain.telephony",
+        "tokens_est": 3092,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "how is the weekly summary notification created and when",
+        "id": "domain.analytics",
+        "tokens_est": 2746,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "how often is knowledge reviewed",
+        "id": "gov.knowledge-lifecycle",
+        "tokens_est": 1133,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "how often is knowledge reviewed",
+        "id": "gov.knowledge-lifecycle",
+        "tokens_est": 147,
+        "kind": "section",
+        "anchor": "reviewing"
+      },
+      {
+        "question": "how often should each document be reviewed",
+        "id": "gov.contribution-protocol",
+        "tokens_est": 162,
+        "kind": "section",
+        "anchor": "review-cadence"
+      },
+      {
+        "question": "is CampaignWithStats a live query or a cached column",
+        "id": "domain.campaigns",
+        "tokens_est": 2585,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "is the Analytics screen real data or a mock",
+        "id": "domain.analytics",
+        "tokens_est": 2746,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "is the analytics screen real",
+        "id": "mem.known-issues",
+        "tokens_est": 2494,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "should I use a containment tool here",
+        "id": "tool.optimization-registry",
+        "tokens_est": 1253,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "should I use the database MCP for this",
+        "id": "tool.mcp-registry",
+        "tokens_est": 533,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "was Y considered",
+        "id": "mem.decisions",
+        "tokens_est": 2102,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what MCP servers are available",
+        "id": "tool.mcp-registry",
+        "tokens_est": 533,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what Redis keys and TTLs does a dial session depend on",
+        "id": "domain.dialer",
+        "tokens_est": 2694,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what are the L1 through L5 layer rules",
+        "id": "gov.documentation-standards",
+        "tokens_est": 153,
+        "kind": "section",
+        "anchor": "the-layer-rules"
+      },
+      {
+        "question": "what are the allowed values of category and contact_status",
+        "id": "domain.contacts",
+        "tokens_est": 2237,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what are the canonical contact fields and which one is required",
+        "id": "domain.contacts",
+        "tokens_est": 2237,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what are the components",
+        "id": "arch.system-overview",
+        "tokens_est": 2080,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what are the indexes for",
+        "id": "meta.indexes-readme",
+        "tokens_est": 779,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what are the known issues",
+        "id": "mem.known-issues",
+        "tokens_est": 2494,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what are the legal campaign status values and who changes them",
+        "id": "domain.campaigns",
+        "tokens_est": 2585,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what are the writing rules for a .brain document",
+        "id": "gov.documentation-standards",
+        "tokens_est": 390,
+        "kind": "section",
+        "anchor": "writing-rules"
+      },
+      {
+        "question": "what breaks if I change this",
+        "id": "arch.dependency-graph",
+        "tokens_est": 1626,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what business domains exist",
+        "id": "meta.domains-readme",
+        "tokens_est": 859,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what commands are safe to run",
+        "id": "gov.tool-output-policy",
+        "tokens_est": 1059,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what commands exist",
+        "id": "tool.registry",
+        "tokens_est": 1064,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what depends on what",
+        "id": "arch.dependency-graph",
+        "tokens_est": 1626,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what did previous work get wrong",
+        "id": "mem.lessons",
+        "tokens_est": 1164,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what did this used to look like",
+        "id": "meta.archive-readme",
+        "tokens_est": 605,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what do I do about a drifted document",
+        "id": "gov.knowledge-lifecycle",
+        "tokens_est": 1133,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what do I do about a drifted document",
+        "id": "gov.knowledge-lifecycle",
+        "tokens_est": 197,
+        "kind": "section",
+        "anchor": "drift"
+      },
+      {
+        "question": "what do I update when I change code",
+        "id": "gov.contribution-protocol",
+        "tokens_est": 1047,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what document do I update for a given change",
+        "id": "gov.contribution-protocol",
+        "tokens_est": 200,
+        "kind": "section",
+        "anchor": "by-change-type"
+      },
+      {
+        "question": "what does PARALLEL_DIALER_ENABLED actually gate",
+        "id": "domain.dialer",
+        "tokens_est": 2694,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what does a new document need before it is written",
+        "id": "gov.knowledge-lifecycle",
+        "tokens_est": 64,
+        "kind": "section",
+        "anchor": "creating"
+      },
+      {
+        "question": "what does dialer-session-start actually receive from a campaign",
+        "id": "domain.campaigns",
+        "tokens_est": 2585,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what does success look like for a user",
+        "id": "ctx.product",
+        "tokens_est": 1203,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what does this product do",
+        "id": "ctx.product",
+        "tokens_est": 1203,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what endpoints exist",
+        "id": "arch.service-map",
+        "tokens_est": 1555,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what events does the dialer emit",
+        "id": "arch.data-flows",
+        "tokens_est": 1919,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what exactly counts as a duplicate on import",
+        "id": "domain.contacts",
+        "tokens_est": 2237,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what external services does this depend on",
+        "id": "arch.system-overview",
+        "tokens_est": 2080,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what external services does this use",
+        "id": "tool.integrations",
+        "tokens_est": 1204,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what frontmatter fields are required",
+        "id": "gov.documentation-standards",
+        "tokens_est": 139,
+        "kind": "section",
+        "anchor": "frontmatter"
+      },
+      {
+        "question": "what frontmatter is required",
+        "id": "gov.documentation-standards",
+        "tokens_est": 1290,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what happens if Redis goes down",
+        "id": "tool.integrations",
+        "tokens_est": 1204,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what happens when a call is answered",
+        "id": "arch.data-flows",
+        "tokens_est": 1919,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what happens when part of an import fails",
+        "id": "domain.contacts",
+        "tokens_est": 2237,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what have we learned the hard way",
+        "id": "mem.lessons",
+        "tokens_est": 1164,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what is being worked on",
+        "id": "mem.active-work",
+        "tokens_est": 933,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what is broken",
+        "id": "mem.known-issues",
+        "tokens_est": 2494,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what is in flight",
+        "id": "mem.active-work",
+        "tokens_est": 933,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what is in this directory",
+        "id": "map.repository",
+        "tokens_est": 1489,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what is stored in Redis versus Postgres",
+        "id": "arch.data-flows",
+        "tokens_est": 1919,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what is surprising about this codebase",
+        "id": "mem.lessons",
+        "tokens_est": 1164,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what is the .brain directory",
+        "id": "meta.brain-readme",
+        "tokens_est": 1962,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what is the architecture",
+        "id": "arch.system-overview",
+        "tokens_est": 2080,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what is the blast radius of changing dialer-engine",
+        "id": "arch.dependency-graph",
+        "tokens_est": 1626,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what is the current backlog",
+        "id": "mem.active-work",
+        "tokens_est": 933,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what is the difference between call_logs and call_events",
+        "id": "domain.analytics",
+        "tokens_est": 2746,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what legacy Telnyx env var names are still honoured",
+        "id": "domain.telephony",
+        "tokens_est": 3092,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what mistakes should I avoid here",
+        "id": "mem.lessons",
+        "tokens_est": 1164,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what problem does it solve",
+        "id": "ctx.product",
+        "tokens_est": 1203,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what should I not trust",
+        "id": "mem.known-issues",
+        "tokens_est": 2494,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what should I pick up next",
+        "id": "mem.active-work",
+        "tokens_est": 933,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what third-party accounts do I need",
+        "id": "tool.integrations",
+        "tokens_est": 1204,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what token optimization tools are enabled",
+        "id": "tool.optimization-registry",
+        "tokens_est": 1253,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what user metadata is collected at signup",
+        "id": "domain.auth",
+        "tokens_est": 2342,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "what writes rows into call_events, and why are my dashboard metrics always zero",
+        "id": "domain.analytics",
+        "tokens_est": 2746,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "when do I need to update a .brain document",
+        "id": "gov.contribution-protocol",
+        "tokens_est": 114,
+        "kind": "section",
+        "anchor": "the-rule"
+      },
+      {
+        "question": "when is it OK to delete a document instead of archiving it",
+        "id": "gov.knowledge-lifecycle",
+        "tokens_est": 116,
+        "kind": "section",
+        "anchor": "deleting"
+      },
+      {
+        "question": "when should a document be archived",
+        "id": "gov.knowledge-lifecycle",
+        "tokens_est": 1133,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "when should a document be archived",
+        "id": "gov.knowledge-lifecycle",
+        "tokens_est": 139,
+        "kind": "section",
+        "anchor": "archiving"
+      },
+      {
+        "question": "where are the migrations",
+        "id": "map.repository",
+        "tokens_est": 1489,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "where did the old documentation go",
+        "id": "meta.archive-readme",
+        "tokens_est": 605,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "where do I add a new endpoint",
+        "id": "arch.service-map",
+        "tokens_est": 1555,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "where do I configure Telnyx",
+        "id": "tool.integrations",
+        "tokens_est": 1204,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "where do I put a new component",
+        "id": "map.repository",
+        "tokens_est": 1489,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "where do the Dashboard's Calls Today / Connect Rate / Talk Time numbers come from",
+        "id": "domain.analytics",
+        "tokens_est": 2746,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "where does SUPABASE_SERVICE_ROLE_KEY bypass RLS",
+        "id": "domain.auth",
+        "tokens_est": 2342,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "where does a new feature belong",
+        "id": "arch.system-overview",
+        "tokens_est": 2080,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "where does feature X live",
+        "id": "map.repository",
+        "tokens_est": 1489,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "where does knowledge live",
+        "id": "meta.brain-readme",
+        "tokens_est": 1962,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "where does this piece of knowledge belong",
+        "id": "gov.documentation-standards",
+        "tokens_est": 1290,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "where does this piece of knowledge belong",
+        "id": "gov.documentation-standards",
+        "tokens_est": 238,
+        "kind": "section",
+        "anchor": "where-knowledge-belongs"
+      },
+      {
+        "question": "where is symbol X defined",
+        "id": "meta.indexes-readme",
+        "tokens_est": 779,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "where is the Telnyx API reference",
+        "id": "tool.integrations",
+        "tokens_est": 1204,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "where is the code for the dialer",
+        "id": "map.repository",
+        "tokens_est": 1489,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "where is the dashboard chart date range stored",
+        "id": "domain.analytics",
+        "tokens_est": 2746,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "which Edge Functions are actually unauthenticated",
+        "id": "domain.auth",
+        "tokens_est": 2342,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "which Telnyx connection ID goes in which env var",
+        "id": "domain.telephony",
+        "tokens_est": 3092,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "which domain owns X",
+        "id": "meta.domains-readme",
+        "tokens_est": 859,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "which external packages matter",
+        "id": "arch.dependency-graph",
+        "tokens_est": 1626,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "which function handles X",
+        "id": "arch.service-map",
+        "tokens_est": 1555,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "which function is the biggest risk to change",
+        "id": "arch.service-map",
+        "tokens_est": 1555,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "which functions are authenticated",
+        "id": "arch.service-map",
+        "tokens_est": 1555,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "which tables have RLS and what do the policies allow",
+        "id": "domain.auth",
+        "tokens_est": 2342,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "who do I ask about the dialer",
+        "id": "gov.ownership",
+        "tokens_est": 761,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "who is this for",
+        "id": "ctx.product",
+        "tokens_est": 1203,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "who owns what",
+        "id": "gov.ownership",
+        "tokens_est": 761,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "who should review this change",
+        "id": "gov.ownership",
+        "tokens_est": 761,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "why are CSV parse and import two separate requests",
+        "id": "domain.contacts",
+        "tokens_est": 2237,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "why did a dial session stall, or calls_connected stay 0, or a webhook replay break it",
+        "id": "domain.dialer",
+        "tokens_est": 2694,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "why do queued / completed / passthrough counts never move",
+        "id": "domain.campaigns",
+        "tokens_est": 2585,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "why do we do it this way",
+        "id": "mem.decisions",
+        "tokens_est": 2102,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "why does Start Parallel Dial fail with 'No dialable contacts in campaign'",
+        "id": "domain.campaigns",
+        "tokens_est": 2585,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "why does dialing fail with TELNYX_CONNECTION_REJECTED / INVALID_TELNYX_CONNECTION",
+        "id": "domain.telephony",
+        "tokens_est": 3092,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "why does the 'Contacted' filter never match anything",
+        "id": "domain.contacts",
+        "tokens_est": 2237,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "why is components/ui not formatted",
+        "id": "mem.decisions",
+        "tokens_est": 2102,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "why is telnyx-webhook deployed with --no-verify-jwt",
+        "id": "domain.telephony",
+        "tokens_est": 3092,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "why is the webhook unauthenticated",
+        "id": "mem.decisions",
+        "tokens_est": 2102,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "why is there a Redis and a Postgres",
+        "id": "mem.decisions",
+        "tokens_est": 2102,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "why is there a Redis if there is already a Postgres",
+        "id": "arch.system-overview",
+        "tokens_est": 2080,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "why is this behaving strangely",
+        "id": "mem.known-issues",
+        "tokens_est": 2494,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "why is verify_jwt false on almost every function",
+        "id": "domain.auth",
+        "tokens_est": 2342,
+        "kind": "document",
+        "anchor": null
+      },
+      {
+        "question": "why was X chosen",
+        "id": "mem.decisions",
+        "tokens_est": 2102,
+        "kind": "document",
+        "anchor": null
+      }
+    ],
+    "reachability": {
+      "entry": [
+        "CLAUDE.md",
+        "AGENTS.md"
+      ],
+      "max_hops": 3,
+      "unreachable": [],
+      "hops": {
+        "meta.brain-readme": 1,
+        "arch.system-overview": 1,
+        "arch.service-map": 1,
+        "map.repository": 1,
+        "domain.dialer": 1,
+        "domain.telephony": 1,
+        "domain.contacts": 1,
+        "domain.campaigns": 1,
+        "domain.auth": 1,
+        "domain.analytics": 1,
+        "mem.decisions": 1,
+        "mem.known-issues": 1,
+        "mem.active-work": 1,
+        "mem.lessons": 1,
+        "tool.registry": 1,
+        "tool.integrations": 1,
+        "gov.contribution-protocol": 1,
+        "ctx.product": 1,
+        "arch.data-flows": 1,
+        "arch.dependency-graph": 1,
+        "gov.ownership": 1,
+        "tool.optimization-registry": 1,
+        "meta.domains-readme": 2,
+        "gov.documentation-standards": 2,
+        "gov.knowledge-lifecycle": 2,
+        "gov.tool-output-policy": 2,
+        "tool.mcp-registry": 2,
+        "meta.indexes-readme": 2,
+        "meta.archive-readme": 2,
+        "meta.agents-readme": 2,
+        "archive.csv-import-build-spec": 3
+      }
+    }
+  }
+}

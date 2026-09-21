@@ -63,7 +63,7 @@ Two distinct layers — don't confuse them.
 Supabase's edge rejecting requests before your code runs. It is disabled for
 five functions: the four `telnyx-*` client-facing ones and `telnyx-webhook`.
 
-**In-function verification** (`_shared/auth.ts`) is the function checking the
+**In-function verification** (`supabase/functions/_shared/auth.ts`) is the function checking the
 caller's token itself. **Every function except `telnyx-webhook` does this**,
 including the four with gateway verification turned off.
 

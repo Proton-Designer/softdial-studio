@@ -46,7 +46,7 @@ Supabase Dashboard → **Project Settings** → **Edge Functions** → **Secrets
 | Secret                     | Description                                                                                                                                                                                                               |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `TELNYX_API_KEY`           | Telnyx API key (Bearer)                                                                                                                                                                                                   |
-| `TELNYX_CONNECTION_ID`     | Call Control connection ID for outbound dialing. **Not** the same as the WebRTC credential connection. See [TELNYX_CALL_CONTROL_SETUP.md](./TELNYX_CALL_CONTROL_SETUP.md) for how to create/find it in the Telnyx portal. |
+| `TELNYX_CONNECTION_ID`     | Call Control connection ID for outbound dialing. **Not** the same as the WebRTC credential connection. See [telnyx-call-control-setup.md](./telnyx-call-control-setup.md) for how to create/find it in the Telnyx portal. |
 | `TELNYX_PHONE_NUMBER`      | Outbound caller ID, e.g. `+15551234567`                                                                                                                                                                                   |
 | `TELNYX_WEBHOOK_SECRET`    | Used to verify Telnyx webhook signatures                                                                                                                                                                                  |
 | `UPSTASH_REDIS_REST_URL`   | Upstash Redis REST URL                                                                                                                                                                                                    |
@@ -115,7 +115,7 @@ In Telnyx (Voice → Call Control Application and/or SIP Connection), set the we
 
 **https://YOUR_PROJECT_REF.supabase.co/functions/v1/telnyx-webhook**
 
-Same as in `docs/TELNYX_WEBHOOK_URLS.md`.
+Same as in [`docs/reference/edge-functions.md`](../reference/edge-functions.md).
 
 ---
 

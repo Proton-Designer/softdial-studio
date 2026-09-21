@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "artifact": "dependency-index",
+    "version": "1.0",
+    "generated_at": "2026-09-21T22:00:27.058Z",
+    "target": "/Users/aymanmohammed/Desktop/Softdial",
+    "git": {
+      "commit": "12911cc",
+      "branch": "chore/repo-modernization",
+      "dirty": true
+    },
+    "tool": {
+      "name": "agent-brain",
+      "version": "0.1.0"
+    }
+  },
+  "data": {
+    "internal": [],
+    "external": [
+      {
+        "name": "@eslint/js",
+        "version": "^9.37.0",
+        "used_by": [],
+        "kind": "dev"
+      },
+      {
+        "name": "eslint-config-prettier",
+        "version": "^10.1.8",
+        "used_by": [],
+        "kind": "dev"
+      },
+      {
+        "name": "eslint-plugin-react-hooks",
+        "version": "^5.2.0",
+        "used_by": [],
+        "kind": "dev"
+      },
+      {
+        "name": "eslint-plugin-react-refresh",
+        "version": "^0.4.20",
+        "used_by": [],
+        "kind": "dev"
+      },
+      {
+        "name": "globals",
+        "version": "^16.4.0",
+        "used_by": [],
+        "kind": "dev"
+      },
+      {
+        "name": "typescript-eslint",
+        "version": "^8.46.0",
+        "used_by": [],
+        "kind": "dev"
+      }
+    ],
+    "cycles": [],
+    "cycles_truncated": false,
+    "boundary_violations": [],
+    "unparsed_rules": [
+      {
+        "source": ".brain/architecture/dependency-graph.md",
+        "raw": "| `components/**` must not import `@supabase/supabase-js` directly — go through `apps/web/src/lib/api.ts` | **Nothing.** Convention only. |"
+      },
+      {
+        "source": ".brain/architecture/dependency-graph.md",
+        "raw": "| `components/ui/**` must not import from `components/<feature>/**` | **Nothing.** Convention only. |"
+      }
+    ]
+  }
+}

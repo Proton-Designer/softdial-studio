@@ -1,207 +1,121 @@
-Build a complete CSV contact import system and single contact creation feature
-for our cold-calling web app. Here is the full spec:
+# CSV contact import
 
----
+How the import wizard actually works, and what to change when you add a field.
 
-## PART 1: CSV UPLOAD & COLUMN MAPPING FLOW
+> The previous contents of this file were the original **build prompt**, not
+> documentation — it specified Next.js API routes and Python/pandas, neither of
+> which was built. It is preserved verbatim at
+> [`.brain/archive/2026-09-21-csv-import-build-spec.md`](../../.brain/archive/2026-09-21-csv-import-build-spec.md).
+> For a summary of this domain, see [`.brain/domains/contacts.md`](../../.brain/domains/contacts.md).
 
-### Step 1: CSV Upload Entry Point
+## The flow
 
-- Add an "Import Contacts" button to the existing contacts screen
-- On click, open a modal or navigate to a new /contacts/import page
-- The upload area should accept .csv files only, with drag-and-drop support
-  and a fallback file picker button
-- On file selection, immediately parse the CSV using Python/Pandas on the
-  backend before showing any UI
+Import is **two round-trips** to two different Edge Functions, with a human
+decision in between.
 
-### Step 2: Backend CSV Parsing Endpoint
+```
+file ──► browser reads text (ImportContactsModal.tsx:85-99)
+      ──► POST contacts-parse-csv  { csv_text }
+          └─► returns columns[] with a PROPOSED mapping, total_rows, 3 preview rows
+      ──► user corrects the mapping in the wizard
+      ──► POST contacts-import     { csv_text (again), mappings, category, campaign_id? }
+          └─► parses, normalises phones, de-duplicates, one bulk insert
+          └─► optionally links the new ids into campaign_leads
+      ◄── { imported, skipped, duplicates }
+```
 
-Create a POST /api/contacts/parse-csv endpoint that:
+**Why two calls.** Parsing is a pure, side-effect-free proposal; the human then
+edits it. The server keeps **no state between the calls**, so the client re-sends
+the full CSV text on the second one. Nothing is written until the second call —
+abandoning the wizard imports nothing.
 
-- Accepts a multipart/form-data CSV file upload
-- Uses pandas to read the CSV: pd.read_csv(file)
-- Extracts all column headers from the file
-- Grabs a preview of the first 3 rows of data for each column
-- Runs automatic column mapping using fuzzy string matching logic against
-  this exact list of canonical field names:
-  - Business Name
-  - Business Link
-  - Business Type
-  - Rating
-  - Review Count
-  - Open Hours
-  - Phone Number
-  - Website
-  - Notes
-  - First Name
-  - Last Name
-  - Owner Contact
-- Fuzzy matching rules (implement in this priority order):
-  1. Exact match (case-insensitive)
-  2. Contains match (e.g. "biz name" → Business Name, "phone" → Phone Number)
-  3. Common alias mapping:
-     "company" or "company name" → Business Name
-     "url" or "link" or "google link" or "maps" → Business Link
-     "type" or "category" or "industry" → Business Type
-     "stars" or "score" → Rating
-     "reviews" or "review #" or "num reviews" → Review Count
-     "hours" or "schedule" or "availability" → Open Hours
-     "phone" or "tel" or "telephone" or "mobile" or "cell" → Phone Number
-     "site" or "web" or "webpage" or "domain" → Website
-     "note" or "comment" or "description" or "memo" → Notes
-     "first" or "fname" or "given name" → First Name
-     "last" or "lname" or "surname" or "family name" → Last Name
-     "owner" or "contact" or "contact name" or "decision maker" → Owner Contact
-  4. If no match found → status: "incomplete"
-- Return JSON response with shape:
-  {
-  columns: [
-  {
-  original_header: string, // raw name from CSV
-  mapped_field: string | null, // matched canonical field or null
-  status: "mapped" | "incomplete",
-  preview_data: string[] // first 3 non-null values from this column
-  }
-  ],
-  total_rows: number,
-  preview_rows: object[] // first 3 full rows as objects
-  }
+### Auto-mapping
 
-### Step 3: Column Mapping Review Screen
+`contacts-parse-csv` scores every (column, canonical field) pair as
+`0.5·headerMatchScore + 0.5·valueMatchScore`, sorts descending, and greedily
+assigns so each column and each field is used at most once, dropping anything
+below 30 (`supabase/functions/contacts-parse-csv/index.ts:157-188`).
 
-Build a full mapping review UI (match the screenshot provided) with:
+In the wizard, Import stays disabled until _every_ column has a value — choosing
+"Skip this column" counts. Selecting a field already mapped elsewhere blanks the
+other column instead of duplicating it.
 
-LAYOUT:
+### De-duplication
 
-- Full page or large modal layout
-- Title: "Map Your Columns"
-- Subtitle: "X columns mapped automatically · Y need your attention"
-- A table/list with these columns:
-  [Column header in file] [Preview information] [Status] [Object] [Fields]
-- "Column header in file": show the raw CSV column name
-- "Preview information": show the first 3 values from that column,
-  separated by line breaks, truncated to 40 chars each
-- "Status":
-  - Green pill with checkmark + "Mapped" if auto-matched
-  - Grey pill "Pending" if incomplete
-- "Object": always show "Contact" (static label for now)
-- "Fields": a dropdown (shadcn Select component) showing all 12 canonical
-  field options plus a "Skip this column" option. Pre-select the matched
-  field if status is "mapped". Show "Please Select" placeholder if pending.
+The key is **digits-only phone number, scoped to the importing user**.
 
-BEHAVIOR:
+`contacts-import` loads every existing `phone_number` for the user into a Set of
+`phone.replace(/\D/g, '')` (`index.ts:76-84`). Per row: normalise the phone; if it
+is `null`, count `skipped`; if its digits are already in the Set, count
+`duplicates`; otherwise add and queue it (`:114-124`).
 
-- When user changes a dropdown, update that column's mapped_field in state
-- Prevent duplicate field assignments: if a field is already selected in
-  another row, grey it out in other dropdowns but still allow it
-- Show a running count at the top: "X of Y columns assigned"
-- "Finish Import" button at the bottom, disabled until all columns are
-  either assigned OR explicitly set to "Skip this column"
-- "Cancel" button that returns to contacts screen without saving
+Because the Set is updated as it goes, this also catches duplicates **within the
+same CSV**. Nothing else participates — not name, business, or address. Duplicates
+are silently dropped, never merged or updated.
 
-### Step 4: Import Execution
+`normalizePhone` (`:22-28`): 10 digits not starting with `1` → `+1XXXXXXXXXX`;
+11 digits starting with `1` → `+1XXXXXXXXXX`; ≥10 digits otherwise → `+` + digits;
+fewer than 10 digits → `null`.
 
-On "Finish Import" click:
+### Failure behaviour
 
-- Send POST /api/contacts/import with:
-  {
-  column_mappings: [{ original_header, mapped_field }],
-  file_id: string // reference to the temp-stored parsed CSV on server
-  }
-- Backend Python/Pandas script should:
-  1. Re-read the CSV using the confirmed mappings
-  2. For each row, construct a contact object with only the mapped fields
-  3. Normalize phone numbers: strip all non-numeric characters, format as
-     E.164 (+1XXXXXXXXXX for US numbers)
-  4. Skip rows where Phone Number is empty/null (phone is required)
-  5. Deduplicate against existing contacts by phone number
-  6. Bulk insert all valid contacts into the Supabase contacts table
-  7. Return { imported: number, skipped: number, duplicates: number }
-- Show a success screen: "X contacts imported successfully" with a
-  "View Contacts" button that navigates back to the contacts list
+The insert is **one bulk statement**, so a constraint violation returns 500 and
+**no rows land** (`contacts-import/index.ts:129-139`).
 
----
+A partial success is still possible in the campaign step: contacts are already
+committed when the `campaign_leads` upsert runs, and **that upsert's error is never
+checked** (`:157-160`). A `campaign_id` that is missing or belongs to someone else
+skips linking silently (`:151`).
 
-## PART 2: SINGLE CONTACT ADD FORM
+## Adding a new importable field, end to end
 
-Add an "Add Contact" button next to the "Import Contacts" button on the
-contacts screen. On click, open a modal (not a new page) with:
+Every step is required unless marked optional. Missing one usually fails
+silently rather than loudly.
 
-DEFAULT FIELDS (always shown, all optional):
+1. **A new migration file**, timestamped after `20260208000001`:
+   `ALTER TABLE public.contacts ADD COLUMN IF NOT EXISTS <col> …`.
+   Never edit an applied migration.
+2. `supabase/functions/contacts-parse-csv/index.ts:5` — add the label to
+   `CANONICAL_FIELDS`.
+3. _(optional)_ same file `:21` `ALIASES` — header synonyms. Without them only an
+   exact or substring header match auto-maps.
+4. _(optional)_ same file `:138` `valueMatchScore` — a value heuristic. Without one
+   the field scores on header alone; a perfect header match still clears the 30
+   threshold.
+5. `supabase/functions/contacts-import/index.ts:6` — add `'<Label>': '<col>'` to
+   `CANONICAL_TO_DB`.
+6. same file `:99-113` — add a coercion branch if the column is not text; otherwise
+   it is written as `val || null`.
+7. `apps/web/src/lib/api.ts:192` — add the label to `CONTACT_CANONICAL_FIELDS`.
+   This alone feeds the wizard's dropdown, so `ImportContactsModal.tsx` needs no edit.
+8. `apps/web/src/lib/api.ts:208` — add the column to the `Contact` interface.
+9. `apps/web/src/lib/api.ts:285` — add it to `CreateContactInput`.
+10. `apps/web/src/lib/api.ts:310-328` — add it to the `createContact` insert body.
+    Fields absent here are never written by the single-add path.
+11. `apps/web/src/components/contacts/AddContactModal.tsx:75` — add the label to
+    `toDbKey`'s map, **or the value silently lands in `notes`** (`:90` ends
+    `return map[label] ?? 'notes'`). Add to `DEFAULT_FIELDS` (`:12`) only if it
+    should show without expanding "additional fields", and add a numeric branch at
+    `:102-104` if it is not a string.
+12. `apps/web/src/components/contacts/ContactDetailModal.tsx` — render it, or it is
+    invisible after import.
+13. _(optional)_ `apps/web/src/components/Contacts.tsx:275-330` for card display,
+    and `:67-78` to make it searchable.
 
-- Business Name (text input)
-- Business Type (text input)
-- Phone Number (text input, validated as phone number on submit)
-- Website (text input, validated as URL on submit)
+## Enums
 
-ADDITIONAL FIELDS (collapsed by default):
+| Field            | Allowed values                                     | Enforced where                                                                                                                                                                  |
+| ---------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `category`       | `Cold`, `Warm`, `Follow Up`, `Voicemail`, `Booked` | Whitelist at `contacts-import/index.ts:46` — anything else silently becomes `Cold`. **No DB CHECK.**                                                                            |
+| `contact_status` | `No Contact`, `Contacted`                          | UI filter only. Import hardcodes `'No Contact'` (`contacts-import/index.ts:95`). **No DB CHECK, and nothing ever writes `'Contacted'`** — that filter always returns zero rows. |
 
-- An "+ Add Field" button that opens a dropdown listing any canonical
-  fields not already shown:
-  Business Link, Rating, Review Count, Open Hours, Notes,
-  First Name, Last Name, Owner Contact
-- Each selected additional field adds a new labeled input row
-- Added fields can be removed with an X button
+## Gotchas
 
-BEHAVIOR:
-
-- At least one field must have a value to enable the Save button
-- Phone number, if provided, must be a valid format
-- On save: POST /api/contacts/single with the contact data
-- Insert into Supabase contacts table with the same schema as CSV imports
-- On success: close modal, refresh contacts list, show a brief toast
-  "Contact added successfully"
-- On error: show inline error message, do not close modal
-
----
-
-## SUPABASE CONTACTS TABLE SCHEMA
-
-Ensure the contacts table has these columns (create migration if needed):
-id uuid primary key default gen_random_uuid()
-user_id uuid references auth.users not null
-business_name text
-business_link text
-business_type text
-rating numeric(3,1)
-review_count integer
-open_hours text
-phone_number text
-website text
-notes text
-first_name text
-last_name text
-owner_contact text
-created_at timestamptz default now()
-updated_at timestamptz default now()
-
-Add index on (user_id, phone_number) for deduplication queries.
-Row-level security: users can only read/write their own contacts.
-
----
-
-## TECH STACK CONTEXT
-
-- Frontend: React/Next.js with TypeScript, Tailwind CSS, shadcn/ui components
-- Backend: Next.js API routes + Python scripts invoked via child_process or
-  a FastAPI microservice
-- Database: Supabase (PostgreSQL)
-- CSV parsing: Python with pandas library
-- Phone normalization: phonenumbers Python library
-- File handling: store temp CSV in /tmp during the mapping session, clean
-  up after import completes
-
----
-
-## FILE STRUCTURE TO CREATE/MODIFY
-
-- app/contacts/page.tsx — add Import and Add Contact buttons
-- app/contacts/import/page.tsx — mapping review screen
-- app/api/contacts/parse-csv/route.ts — calls Python parser script
-- app/api/contacts/import/route.ts — calls Python import script
-- app/api/contacts/single/route.ts — single contact creation
-- scripts/parse_csv.py — pandas parsing + fuzzy matching logic
-- scripts/import_contacts.py — pandas import + normalization + bulk insert
-- components/contacts/AddContactModal.tsx — single add modal
-- components/contacts/ColumnMappingTable.tsx — mapping review table component
-- supabase/migrations/xxx_contacts_table.sql — schema migration
+- **`Business Link` is deliberately special-cased** — it matches only the exact
+  headers `business link` or `link`, never a substring of `Business`
+  (`contacts-parse-csv/index.ts:75-77`, `:92`).
+- **There is no update path.** `ContactDetailModal` is read-only and no
+  `updateContact` exists, so `category` and `contact_status` cannot be changed from
+  the UI after creation.
+- **Contacts paginate client-side**, 50 per page, after `select('*')` of the whole
+  table (`api.ts:276-283`). Large lists load entirely into the browser.

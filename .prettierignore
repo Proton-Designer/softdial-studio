@@ -1,10 +1,23 @@
 node_modules/
 dist/
 build/
-vendor/
-.brain/indexes/
+package-lock.json
 *.min.css
 *.min.js
-package-lock.json
+
+# Generated shadcn/ui primitives — keep upstream diffs readable
 apps/web/src/components/ui/
+
+# Vendored submodules and tool-specific reference material
+vendor/
 .cursor/
+
+# Agent-Brain knowledge base and root context files.
+# These are governed by line budgets enforced by `brain verify --strict`;
+# reflowing them with Prettier changes line counts and breaks that check.
+.brain/
+CLAUDE.md
+AGENTS.md
+ARCHITECTURE.md
+REPOSITORY_MAP.md
+PRODUCT_CONTEXT.md

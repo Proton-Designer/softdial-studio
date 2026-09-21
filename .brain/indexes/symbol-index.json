@@ -1,0 +1,4312 @@
+{
+  "meta": {
+    "artifact": "symbol-index",
+    "version": "1.0",
+    "generated_at": "2026-09-21T22:00:27.058Z",
+    "target": "/Users/aymanmohammed/Desktop/Softdial",
+    "git": {
+      "commit": "12911cc",
+      "branch": "chore/repo-modernization",
+      "dirty": true
+    },
+    "tool": {
+      "name": "agent-brain",
+      "version": "0.1.0"
+    }
+  },
+  "data": {
+    "limitations": "Regex-derived, not a parser. Misses dynamically defined, re-exported, and metaprogrammed symbols. Absence here is not evidence a symbol does not exist. Java and Ruby entries are exported/public-only — no regex-safe way to distinguish package-private without false positives. Python \"exported\" is a naming-convention heuristic (no leading underscore), not a language guarantee.",
+    "languages_covered": [
+      "JavaScript",
+      "TypeScript"
+    ],
+    "symbols": [
+      {
+        "name": "AppContent",
+        "kind": "function",
+        "file": "apps/web/src/App.tsx",
+        "line": 7,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "App",
+        "kind": "function",
+        "file": "apps/web/src/App.tsx",
+        "line": 33,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "callVolumeData",
+        "kind": "const",
+        "file": "apps/web/src/components/Analytics.tsx",
+        "line": 17,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "performanceData",
+        "kind": "const",
+        "file": "apps/web/src/components/Analytics.tsx",
+        "line": 25,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "agentData",
+        "kind": "const",
+        "file": "apps/web/src/components/Analytics.tsx",
+        "line": 32,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Analytics",
+        "kind": "function",
+        "file": "apps/web/src/components/Analytics.tsx",
+        "line": 40,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "AnimatedBackground",
+        "kind": "function",
+        "file": "apps/web/src/components/AnimatedBackground.tsx",
+        "line": 3,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "AuthScreen",
+        "kind": "function",
+        "file": "apps/web/src/components/AuthScreen.tsx",
+        "line": 12,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "formatDate",
+        "kind": "function",
+        "file": "apps/web/src/components/Campaigns.tsx",
+        "line": 7,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Campaigns",
+        "kind": "function",
+        "file": "apps/web/src/components/Campaigns.tsx",
+        "line": 19,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CATEGORIES",
+        "kind": "const",
+        "file": "apps/web/src/components/Contacts.tsx",
+        "line": 29,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CONTACT_STATUSES",
+        "kind": "const",
+        "file": "apps/web/src/components/Contacts.tsx",
+        "line": 30,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CONTACTS_PER_PAGE",
+        "kind": "const",
+        "file": "apps/web/src/components/Contacts.tsx",
+        "line": 31,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "contactDisplayName",
+        "kind": "function",
+        "file": "apps/web/src/components/Contacts.tsx",
+        "line": 33,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Contacts",
+        "kind": "function",
+        "file": "apps/web/src/components/Contacts.tsx",
+        "line": 38,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Dashboard",
+        "kind": "function",
+        "file": "apps/web/src/components/Dashboard.tsx",
+        "line": 41,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "REMOTE_AUDIO_ID",
+        "kind": "const",
+        "file": "apps/web/src/components/Dialer.tsx",
+        "line": 14,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DialerStatus",
+        "kind": "type",
+        "file": "apps/web/src/components/Dialer.tsx",
+        "line": 16,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "UserPhoneNumber",
+        "kind": "type",
+        "file": "apps/web/src/components/Dialer.tsx",
+        "line": 18,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Dialer",
+        "kind": "function",
+        "file": "apps/web/src/components/Dialer.tsx",
+        "line": 26,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "TabType",
+        "kind": "type",
+        "file": "apps/web/src/components/MainApp.tsx",
+        "line": 11,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ParallelDialLaunchContext",
+        "kind": "interface",
+        "file": "apps/web/src/components/MainApp.tsx",
+        "line": 13,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "MainApp",
+        "kind": "function",
+        "file": "apps/web/src/components/MainApp.tsx",
+        "line": 18,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Settings",
+        "kind": "function",
+        "file": "apps/web/src/components/Settings.tsx",
+        "line": 19,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "tabs",
+        "kind": "const",
+        "file": "apps/web/src/components/Sidebar.tsx",
+        "line": 12,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "TOP_NAV_HEIGHT",
+        "kind": "const",
+        "file": "apps/web/src/components/Sidebar.tsx",
+        "line": 20,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Sidebar",
+        "kind": "function",
+        "file": "apps/web/src/components/Sidebar.tsx",
+        "line": 22,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "getDisplayName",
+        "kind": "function",
+        "file": "apps/web/src/components/TopNavigation.tsx",
+        "line": 30,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "getInitials",
+        "kind": "function",
+        "file": "apps/web/src/components/TopNavigation.tsx",
+        "line": 38,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "formatNotificationDate",
+        "kind": "function",
+        "file": "apps/web/src/components/TopNavigation.tsx",
+        "line": 49,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "TopNavigation",
+        "kind": "function",
+        "file": "apps/web/src/components/TopNavigation.tsx",
+        "line": 60,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CATEGORIES",
+        "kind": "const",
+        "file": "apps/web/src/components/campaigns/CampaignManageModal.tsx",
+        "line": 26,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CONTACT_STATUSES",
+        "kind": "const",
+        "file": "apps/web/src/components/campaigns/CampaignManageModal.tsx",
+        "line": 27,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "LEADS_PER_PAGE",
+        "kind": "const",
+        "file": "apps/web/src/components/campaigns/CampaignManageModal.tsx",
+        "line": 28,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "contactDisplayName",
+        "kind": "function",
+        "file": "apps/web/src/components/campaigns/CampaignManageModal.tsx",
+        "line": 30,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "formatDate",
+        "kind": "function",
+        "file": "apps/web/src/components/campaigns/CampaignManageModal.tsx",
+        "line": 35,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CampaignManageModal",
+        "kind": "function",
+        "file": "apps/web/src/components/campaigns/CampaignManageModal.tsx",
+        "line": 51,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "AddExistingContactsModal",
+        "kind": "function",
+        "file": "apps/web/src/components/campaigns/CampaignManageModal.tsx",
+        "line": 969,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DEFAULT_FIELDS",
+        "kind": "const",
+        "file": "apps/web/src/components/contacts/AddContactModal.tsx",
+        "line": 12,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ADDITIONAL_OPTIONS",
+        "kind": "const",
+        "file": "apps/web/src/components/contacts/AddContactModal.tsx",
+        "line": 13,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "isValidPhone",
+        "kind": "function",
+        "file": "apps/web/src/components/contacts/AddContactModal.tsx",
+        "line": 17,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "isValidUrl",
+        "kind": "function",
+        "file": "apps/web/src/components/contacts/AddContactModal.tsx",
+        "line": 22,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "AddContactModal",
+        "kind": "function",
+        "file": "apps/web/src/components/contacts/AddContactModal.tsx",
+        "line": 39,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "contactDisplayName",
+        "kind": "function",
+        "file": "apps/web/src/components/contacts/ContactDetailModal.tsx",
+        "line": 6,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "truncateUrl",
+        "kind": "function",
+        "file": "apps/web/src/components/contacts/ContactDetailModal.tsx",
+        "line": 11,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ContactDetailModal",
+        "kind": "function",
+        "file": "apps/web/src/components/contacts/ContactDetailModal.tsx",
+        "line": 22,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SKIP_OPTION",
+        "kind": "const",
+        "file": "apps/web/src/components/contacts/ImportContactsModal.tsx",
+        "line": 21,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "FIELD_OPTIONS",
+        "kind": "const",
+        "file": "apps/web/src/components/contacts/ImportContactsModal.tsx",
+        "line": 22,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "IMPORT_CATEGORIES",
+        "kind": "const",
+        "file": "apps/web/src/components/contacts/ImportContactsModal.tsx",
+        "line": 24,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ImportContactsModal",
+        "kind": "function",
+        "file": "apps/web/src/components/contacts/ImportContactsModal.tsx",
+        "line": 34,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ActiveCall",
+        "kind": "function",
+        "file": "apps/web/src/components/dialer/ActiveCall.tsx",
+        "line": 13,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CampaignStats",
+        "kind": "function",
+        "file": "apps/web/src/components/dialer/CampaignStats.tsx",
+        "line": 7,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ContactBatchCard",
+        "kind": "function",
+        "file": "apps/web/src/components/dialer/ContactBatchCard.tsx",
+        "line": 11,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ContactQueue",
+        "kind": "function",
+        "file": "apps/web/src/components/dialer/ContactQueue.tsx",
+        "line": 23,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "keypadButtons",
+        "kind": "const",
+        "file": "apps/web/src/components/dialer/DialerIdle.tsx",
+        "line": 15,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DialerIdle",
+        "kind": "function",
+        "file": "apps/web/src/components/dialer/DialerIdle.tsx",
+        "line": 30,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "LiveCallPanel",
+        "kind": "function",
+        "file": "apps/web/src/components/dialer/LiveCallPanel.tsx",
+        "line": 11,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ParallelDialerUI",
+        "kind": "function",
+        "file": "apps/web/src/components/dialer/ParallelDialerUI.tsx",
+        "line": 22,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ERROR_IMG_SRC",
+        "kind": "const",
+        "file": "apps/web/src/components/figma/ImageWithFallback.tsx",
+        "line": 3,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ImageWithFallback",
+        "kind": "function",
+        "file": "apps/web/src/components/figma/ImageWithFallback.tsx",
+        "line": 6,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Accordion",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/accordion.tsx",
+        "line": 9,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "AccordionItem",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/accordion.tsx",
+        "line": 15,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "AccordionTrigger",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/accordion.tsx",
+        "line": 28,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "AccordionContent",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/accordion.tsx",
+        "line": 50,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "AlertDialog",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/alert-dialog.tsx",
+        "line": 9,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "AlertDialogTrigger",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/alert-dialog.tsx",
+        "line": 15,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "AlertDialogPortal",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/alert-dialog.tsx",
+        "line": 23,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "AlertDialogOverlay",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/alert-dialog.tsx",
+        "line": 31,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "AlertDialogContent",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/alert-dialog.tsx",
+        "line": 47,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "AlertDialogHeader",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/alert-dialog.tsx",
+        "line": 66,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "AlertDialogFooter",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/alert-dialog.tsx",
+        "line": 79,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "AlertDialogTitle",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/alert-dialog.tsx",
+        "line": 95,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "AlertDialogDescription",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/alert-dialog.tsx",
+        "line": 108,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "AlertDialogAction",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/alert-dialog.tsx",
+        "line": 121,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "AlertDialogCancel",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/alert-dialog.tsx",
+        "line": 133,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "alertVariants",
+        "kind": "const",
+        "file": "apps/web/src/components/ui/alert.tsx",
+        "line": 6,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Alert",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/alert.tsx",
+        "line": 22,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "AlertTitle",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/alert.tsx",
+        "line": 37,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "AlertDescription",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/alert.tsx",
+        "line": 50,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "AspectRatio",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/aspect-ratio.tsx",
+        "line": 5,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Avatar",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/avatar.tsx",
+        "line": 8,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "AvatarImage",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/avatar.tsx",
+        "line": 24,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "AvatarFallback",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/avatar.tsx",
+        "line": 37,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "badgeVariants",
+        "kind": "const",
+        "file": "apps/web/src/components/ui/badge.tsx",
+        "line": 7,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Badge",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/badge.tsx",
+        "line": 28,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Breadcrumb",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/breadcrumb.tsx",
+        "line": 7,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "BreadcrumbList",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/breadcrumb.tsx",
+        "line": 11,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "BreadcrumbItem",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/breadcrumb.tsx",
+        "line": 24,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "BreadcrumbLink",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/breadcrumb.tsx",
+        "line": 34,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "BreadcrumbPage",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/breadcrumb.tsx",
+        "line": 52,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "BreadcrumbSeparator",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/breadcrumb.tsx",
+        "line": 65,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "BreadcrumbEllipsis",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/breadcrumb.tsx",
+        "line": 83,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "buttonVariants",
+        "kind": "const",
+        "file": "apps/web/src/components/ui/button.tsx",
+        "line": 7,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Button",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/button.tsx",
+        "line": 37,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Calendar",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/calendar.tsx",
+        "line": 10,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Card",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/card.tsx",
+        "line": 5,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CardHeader",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/card.tsx",
+        "line": 18,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CardTitle",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/card.tsx",
+        "line": 31,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CardDescription",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/card.tsx",
+        "line": 41,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CardAction",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/card.tsx",
+        "line": 51,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CardContent",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/card.tsx",
+        "line": 64,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CardFooter",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/card.tsx",
+        "line": 74,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CarouselContext",
+        "kind": "const",
+        "file": "apps/web/src/components/ui/carousel.tsx",
+        "line": 33,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "useCarousel",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/carousel.tsx",
+        "line": 35,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Carousel",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/carousel.tsx",
+        "line": 45,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CarouselContent",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/carousel.tsx",
+        "line": 135,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CarouselItem",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/carousel.tsx",
+        "line": 156,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CarouselPrevious",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/carousel.tsx",
+        "line": 174,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CarouselNext",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/carousel.tsx",
+        "line": 204,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "THEMES",
+        "kind": "const",
+        "file": "apps/web/src/components/ui/chart.tsx",
+        "line": 9,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ChartConfig",
+        "kind": "type",
+        "file": "apps/web/src/components/ui/chart.tsx",
+        "line": 11,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ChartContext",
+        "kind": "const",
+        "file": "apps/web/src/components/ui/chart.tsx",
+        "line": 25,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "useChart",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/chart.tsx",
+        "line": 27,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ChartContainer",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/chart.tsx",
+        "line": 37,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ChartStyle",
+        "kind": "const",
+        "file": "apps/web/src/components/ui/chart.tsx",
+        "line": 72,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ChartTooltip",
+        "kind": "const",
+        "file": "apps/web/src/components/ui/chart.tsx",
+        "line": 105,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ChartTooltipContent",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/chart.tsx",
+        "line": 107,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ChartLegend",
+        "kind": "const",
+        "file": "apps/web/src/components/ui/chart.tsx",
+        "line": 251,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ChartLegendContent",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/chart.tsx",
+        "line": 253,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "getPayloadConfigFromPayload",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/chart.tsx",
+        "line": 308,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Checkbox",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/checkbox.tsx",
+        "line": 9,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Collapsible",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/collapsible.tsx",
+        "line": 5,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CollapsibleTrigger",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/collapsible.tsx",
+        "line": 11,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CollapsibleContent",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/collapsible.tsx",
+        "line": 22,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Command",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/command.tsx",
+        "line": 16,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CommandDialog",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/command.tsx",
+        "line": 32,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CommandInput",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/command.tsx",
+        "line": 56,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CommandList",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/command.tsx",
+        "line": 78,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CommandEmpty",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/command.tsx",
+        "line": 94,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CommandGroup",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/command.tsx",
+        "line": 106,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CommandSeparator",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/command.tsx",
+        "line": 122,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CommandItem",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/command.tsx",
+        "line": 135,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CommandShortcut",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/command.tsx",
+        "line": 151,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ContextMenu",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/context-menu.tsx",
+        "line": 9,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ContextMenuTrigger",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/context-menu.tsx",
+        "line": 15,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ContextMenuGroup",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/context-menu.tsx",
+        "line": 23,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ContextMenuPortal",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/context-menu.tsx",
+        "line": 31,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ContextMenuSub",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/context-menu.tsx",
+        "line": 39,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ContextMenuRadioGroup",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/context-menu.tsx",
+        "line": 45,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ContextMenuSubTrigger",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/context-menu.tsx",
+        "line": 56,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ContextMenuSubContent",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/context-menu.tsx",
+        "line": 80,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ContextMenuContent",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/context-menu.tsx",
+        "line": 96,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ContextMenuItem",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/context-menu.tsx",
+        "line": 114,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ContextMenuCheckboxItem",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/context-menu.tsx",
+        "line": 137,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ContextMenuRadioItem",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/context-menu.tsx",
+        "line": 163,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ContextMenuLabel",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/context-menu.tsx",
+        "line": 187,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ContextMenuSeparator",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/context-menu.tsx",
+        "line": 207,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ContextMenuShortcut",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/context-menu.tsx",
+        "line": 220,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Dialog",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/dialog.tsx",
+        "line": 9,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DialogTrigger",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/dialog.tsx",
+        "line": 15,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DialogPortal",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/dialog.tsx",
+        "line": 21,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DialogClose",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/dialog.tsx",
+        "line": 27,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DialogOverlay",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/dialog.tsx",
+        "line": 33,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DialogContent",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/dialog.tsx",
+        "line": 49,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DialogHeader",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/dialog.tsx",
+        "line": 75,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DialogFooter",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/dialog.tsx",
+        "line": 85,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DialogTitle",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/dialog.tsx",
+        "line": 98,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DialogDescription",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/dialog.tsx",
+        "line": 111,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Drawer",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/drawer.tsx",
+        "line": 8,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DrawerTrigger",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/drawer.tsx",
+        "line": 14,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DrawerPortal",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/drawer.tsx",
+        "line": 20,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DrawerClose",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/drawer.tsx",
+        "line": 26,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DrawerOverlay",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/drawer.tsx",
+        "line": 32,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DrawerContent",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/drawer.tsx",
+        "line": 48,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DrawerHeader",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/drawer.tsx",
+        "line": 75,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DrawerFooter",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/drawer.tsx",
+        "line": 85,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DrawerTitle",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/drawer.tsx",
+        "line": 95,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DrawerDescription",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/drawer.tsx",
+        "line": 108,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DropdownMenu",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/dropdown-menu.tsx",
+        "line": 9,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DropdownMenuPortal",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/dropdown-menu.tsx",
+        "line": 15,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DropdownMenuTrigger",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/dropdown-menu.tsx",
+        "line": 23,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DropdownMenuContent",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/dropdown-menu.tsx",
+        "line": 34,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DropdownMenuGroup",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/dropdown-menu.tsx",
+        "line": 54,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DropdownMenuItem",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/dropdown-menu.tsx",
+        "line": 62,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DropdownMenuCheckboxItem",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/dropdown-menu.tsx",
+        "line": 85,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DropdownMenuRadioGroup",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/dropdown-menu.tsx",
+        "line": 111,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DropdownMenuRadioItem",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/dropdown-menu.tsx",
+        "line": 122,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DropdownMenuLabel",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/dropdown-menu.tsx",
+        "line": 146,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DropdownMenuSeparator",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/dropdown-menu.tsx",
+        "line": 166,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DropdownMenuShortcut",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/dropdown-menu.tsx",
+        "line": 179,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DropdownMenuSub",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/dropdown-menu.tsx",
+        "line": 195,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DropdownMenuSubTrigger",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/dropdown-menu.tsx",
+        "line": 201,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DropdownMenuSubContent",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/dropdown-menu.tsx",
+        "line": 225,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Form",
+        "kind": "const",
+        "file": "apps/web/src/components/ui/form.tsx",
+        "line": 19,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "FormFieldContext",
+        "kind": "const",
+        "file": "apps/web/src/components/ui/form.tsx",
+        "line": 28,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "FormField",
+        "kind": "const",
+        "file": "apps/web/src/components/ui/form.tsx",
+        "line": 32,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "useFormField",
+        "kind": "const",
+        "file": "apps/web/src/components/ui/form.tsx",
+        "line": 45,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "FormItemContext",
+        "kind": "const",
+        "file": "apps/web/src/components/ui/form.tsx",
+        "line": 72,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "FormItem",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/form.tsx",
+        "line": 76,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "FormLabel",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/form.tsx",
+        "line": 90,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "FormControl",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/form.tsx",
+        "line": 107,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "FormDescription",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/form.tsx",
+        "line": 126,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "FormMessage",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/form.tsx",
+        "line": 139,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "HoverCard",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/hover-card.tsx",
+        "line": 8,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "HoverCardTrigger",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/hover-card.tsx",
+        "line": 14,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "HoverCardContent",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/hover-card.tsx",
+        "line": 22,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "InputOTP",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/input-otp.tsx",
+        "line": 9,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "InputOTPGroup",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/input-otp.tsx",
+        "line": 29,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "InputOTPSlot",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/input-otp.tsx",
+        "line": 39,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "InputOTPSeparator",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/input-otp.tsx",
+        "line": 69,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Input",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/input.tsx",
+        "line": 5,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Label",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/label.tsx",
+        "line": 8,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Menubar",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/menubar.tsx",
+        "line": 9,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "MenubarMenu",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/menubar.tsx",
+        "line": 25,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "MenubarGroup",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/menubar.tsx",
+        "line": 31,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "MenubarPortal",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/menubar.tsx",
+        "line": 37,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "MenubarRadioGroup",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/menubar.tsx",
+        "line": 43,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "MenubarTrigger",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/menubar.tsx",
+        "line": 51,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "MenubarContent",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/menubar.tsx",
+        "line": 67,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "MenubarItem",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/menubar.tsx",
+        "line": 91,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "MenubarCheckboxItem",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/menubar.tsx",
+        "line": 114,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "MenubarRadioItem",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/menubar.tsx",
+        "line": 140,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "MenubarLabel",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/menubar.tsx",
+        "line": 164,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "MenubarSeparator",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/menubar.tsx",
+        "line": 184,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "MenubarShortcut",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/menubar.tsx",
+        "line": 197,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "MenubarSub",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/menubar.tsx",
+        "line": 213,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "MenubarSubTrigger",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/menubar.tsx",
+        "line": 219,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "MenubarSubContent",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/menubar.tsx",
+        "line": 243,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "NavigationMenu",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/navigation-menu.tsx",
+        "line": 8,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "NavigationMenuList",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/navigation-menu.tsx",
+        "line": 32,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "NavigationMenuItem",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/navigation-menu.tsx",
+        "line": 48,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "navigationMenuTriggerStyle",
+        "kind": "const",
+        "file": "apps/web/src/components/ui/navigation-menu.tsx",
+        "line": 61,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "NavigationMenuTrigger",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/navigation-menu.tsx",
+        "line": 65,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "NavigationMenuContent",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/navigation-menu.tsx",
+        "line": 85,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "NavigationMenuViewport",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/navigation-menu.tsx",
+        "line": 102,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "NavigationMenuLink",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/navigation-menu.tsx",
+        "line": 124,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "NavigationMenuIndicator",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/navigation-menu.tsx",
+        "line": 140,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Pagination",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/pagination.tsx",
+        "line": 11,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "PaginationContent",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/pagination.tsx",
+        "line": 23,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "PaginationItem",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/pagination.tsx",
+        "line": 36,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "PaginationLink",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/pagination.tsx",
+        "line": 45,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "PaginationPrevious",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/pagination.tsx",
+        "line": 68,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "PaginationNext",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/pagination.tsx",
+        "line": 85,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "PaginationEllipsis",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/pagination.tsx",
+        "line": 102,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Popover",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/popover.tsx",
+        "line": 8,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "PopoverTrigger",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/popover.tsx",
+        "line": 14,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "PopoverContent",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/popover.tsx",
+        "line": 20,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "PopoverAnchor",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/popover.tsx",
+        "line": 42,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Progress",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/progress.tsx",
+        "line": 8,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "RadioGroup",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/radio-group.tsx",
+        "line": 9,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "RadioGroupItem",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/radio-group.tsx",
+        "line": 22,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ResizablePanelGroup",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/resizable.tsx",
+        "line": 9,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ResizablePanel",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/resizable.tsx",
+        "line": 25,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ResizableHandle",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/resizable.tsx",
+        "line": 31,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ScrollArea",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/scroll-area.tsx",
+        "line": 8,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ScrollBar",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/scroll-area.tsx",
+        "line": 31,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Select",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/select.tsx",
+        "line": 13,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SelectGroup",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/select.tsx",
+        "line": 19,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SelectValue",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/select.tsx",
+        "line": 25,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SelectTrigger",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/select.tsx",
+        "line": 31,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SelectContent",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/select.tsx",
+        "line": 57,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SelectLabel",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/select.tsx",
+        "line": 92,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SelectItem",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/select.tsx",
+        "line": 105,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SelectSeparator",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/select.tsx",
+        "line": 129,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SelectScrollUpButton",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/select.tsx",
+        "line": 142,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SelectScrollDownButton",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/select.tsx",
+        "line": 160,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Separator",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/separator.tsx",
+        "line": 8,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Sheet",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sheet.tsx",
+        "line": 9,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SheetTrigger",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sheet.tsx",
+        "line": 13,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SheetClose",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sheet.tsx",
+        "line": 19,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SheetPortal",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sheet.tsx",
+        "line": 25,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SheetOverlay",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sheet.tsx",
+        "line": 31,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SheetContent",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sheet.tsx",
+        "line": 47,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SheetHeader",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sheet.tsx",
+        "line": 84,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SheetFooter",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sheet.tsx",
+        "line": 94,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SheetTitle",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sheet.tsx",
+        "line": 104,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SheetDescription",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sheet.tsx",
+        "line": 117,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SIDEBAR_COOKIE_NAME",
+        "kind": "const",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 28,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SIDEBAR_COOKIE_MAX_AGE",
+        "kind": "const",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 29,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SIDEBAR_WIDTH",
+        "kind": "const",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 30,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SIDEBAR_WIDTH_MOBILE",
+        "kind": "const",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 31,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SIDEBAR_WIDTH_ICON",
+        "kind": "const",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 32,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SIDEBAR_KEYBOARD_SHORTCUT",
+        "kind": "const",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 33,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SidebarContext",
+        "kind": "const",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 45,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "useSidebar",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 47,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SidebarProvider",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 56,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Sidebar",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 154,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SidebarTrigger",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 256,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SidebarRail",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 282,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SidebarInset",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 307,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SidebarInput",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 321,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SidebarHeader",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 335,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SidebarFooter",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 346,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SidebarSeparator",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 357,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SidebarContent",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 371,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SidebarGroup",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 385,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SidebarGroupLabel",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 396,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SidebarGroupAction",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 417,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SidebarGroupContent",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 440,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SidebarMenu",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 454,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SidebarMenuItem",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 465,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "sidebarMenuButtonVariants",
+        "kind": "const",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 476,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SidebarMenuButton",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 498,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SidebarMenuAction",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 548,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SidebarMenuBadge",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 580,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SidebarMenuSkeleton",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 602,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SidebarMenuSub",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 640,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SidebarMenuSubItem",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 655,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SidebarMenuSubButton",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/sidebar.tsx",
+        "line": 669,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Skeleton",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/skeleton.tsx",
+        "line": 3,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Slider",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/slider.tsx",
+        "line": 8,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Toaster",
+        "kind": "const",
+        "file": "apps/web/src/components/ui/sonner.tsx",
+        "line": 6,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Switch",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/switch.tsx",
+        "line": 8,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Table",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/table.tsx",
+        "line": 7,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "TableHeader",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/table.tsx",
+        "line": 22,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "TableBody",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/table.tsx",
+        "line": 32,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "TableFooter",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/table.tsx",
+        "line": 42,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "TableRow",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/table.tsx",
+        "line": 55,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "TableHead",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/table.tsx",
+        "line": 68,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "TableCell",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/table.tsx",
+        "line": 81,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "TableCaption",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/table.tsx",
+        "line": 94,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Tabs",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/tabs.tsx",
+        "line": 8,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "TabsList",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/tabs.tsx",
+        "line": 21,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "TabsTrigger",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/tabs.tsx",
+        "line": 37,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "TabsContent",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/tabs.tsx",
+        "line": 53,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Textarea",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/textarea.tsx",
+        "line": 5,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ToggleGroupContext",
+        "kind": "const",
+        "file": "apps/web/src/components/ui/toggle-group.tsx",
+        "line": 10,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ToggleGroup",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/toggle-group.tsx",
+        "line": 17,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ToggleGroupItem",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/toggle-group.tsx",
+        "line": 43,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "toggleVariants",
+        "kind": "const",
+        "file": "apps/web/src/components/ui/toggle.tsx",
+        "line": 9,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Toggle",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/toggle.tsx",
+        "line": 31,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "TooltipProvider",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/tooltip.tsx",
+        "line": 8,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Tooltip",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/tooltip.tsx",
+        "line": 21,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "TooltipTrigger",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/tooltip.tsx",
+        "line": 31,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "TooltipContent",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/tooltip.tsx",
+        "line": 37,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "MOBILE_BREAKPOINT",
+        "kind": "const",
+        "file": "apps/web/src/components/ui/use-mobile.ts",
+        "line": 3,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "useIsMobile",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/use-mobile.ts",
+        "line": 5,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "cn",
+        "kind": "function",
+        "file": "apps/web/src/components/ui/utils.ts",
+        "line": 4,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SignUpInput",
+        "kind": "interface",
+        "file": "apps/web/src/contexts/AuthContext.tsx",
+        "line": 5,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "AuthContext",
+        "kind": "const",
+        "file": "apps/web/src/contexts/AuthContext.tsx",
+        "line": 24,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "AuthProvider",
+        "kind": "function",
+        "file": "apps/web/src/contexts/AuthContext.tsx",
+        "line": 26,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "useAuth",
+        "kind": "function",
+        "file": "apps/web/src/contexts/AuthContext.tsx",
+        "line": 112,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "UserPhoneNumber",
+        "kind": "interface",
+        "file": "apps/web/src/contexts/PhoneNumbersContext.tsx",
+        "line": 5,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "PhoneNumbersContext",
+        "kind": "const",
+        "file": "apps/web/src/contexts/PhoneNumbersContext.tsx",
+        "line": 19,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "PhoneNumbersProvider",
+        "kind": "function",
+        "file": "apps/web/src/contexts/PhoneNumbersContext.tsx",
+        "line": 21,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "usePhoneNumbers",
+        "kind": "function",
+        "file": "apps/web/src/contexts/PhoneNumbersContext.tsx",
+        "line": 86,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DialerEventType",
+        "kind": "type",
+        "file": "apps/web/src/hooks/useDialerSession.ts",
+        "line": 13,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "BatchContactPreview",
+        "kind": "interface",
+        "file": "apps/web/src/hooks/useDialerSession.ts",
+        "line": 26,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "useDialerSession",
+        "kind": "function",
+        "file": "apps/web/src/hooks/useDialerSession.ts",
+        "line": 48,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "getFunctionsUrl",
+        "kind": "const",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 3,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "isParallelDialerEnabled",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 9,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "getEdgeFunctionHeaders",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 15,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "listPhoneNumbers",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 31,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "searchPhoneNumbers",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 46,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "purchasePhoneNumber",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 57,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DashboardStats",
+        "kind": "interface",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 68,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "getDashboardStats",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 75,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "TeamPerformancePoint",
+        "kind": "interface",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 85,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "getTeamPerformanceChart",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 92,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "UserPreferences",
+        "kind": "interface",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 109,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "getUserPreferences",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 115,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "saveUserPreferences",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 124,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "AppNotification",
+        "kind": "interface",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 138,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "listNotifications",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 147,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "getUnreadNotificationCount",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 157,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "markNotificationRead",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 166,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "markAllNotificationsRead",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 174,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ensureWeekSummary",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 182,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CONTACT_CANONICAL_FIELDS",
+        "kind": "const",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 192,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Contact",
+        "kind": "interface",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 208,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ParseCsvColumn",
+        "kind": "interface",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 230,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ParseCsvResponse",
+        "kind": "interface",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 237,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "parseContactsCsv",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 243,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "importContacts",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 254,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "listContacts",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 276,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CreateContactInput",
+        "kind": "interface",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 285,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "createContact",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 303,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "deleteContact",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 335,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "deleteContacts",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 344,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "Campaign",
+        "kind": "interface",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 355,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CampaignWithStats",
+        "kind": "interface",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 367,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CampaignLead",
+        "kind": "interface",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 374,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "listCampaigns",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 383,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "createCampaign",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 392,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "getCampaign",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 411,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "updateCampaignStatus",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 421,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "listCampaignLeads",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 432,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "addLeadsToCampaign",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 466,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "removeLeadFromCampaign",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 476,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "removeLeadsFromCampaign",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 485,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "getWebrtcCredentials",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 498,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DialerSessionSummary",
+        "kind": "interface",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 512,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DialerSessionStartResponse",
+        "kind": "interface",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 520,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DialerSessionRecord",
+        "kind": "interface",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 529,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DialerBatchState",
+        "kind": "interface",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 544,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ActiveSessionExistsError",
+        "kind": "class",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 554,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "startDialerSession",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 564,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "stopDialerSession",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 668,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "pauseDialerSession",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 681,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "hangupLiveCall",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 693,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "getDialerSession",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 703,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "getActiveDialerSession",
+        "kind": "function",
+        "file": "apps/web/src/lib/api.ts",
+        "line": 720,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "supabaseUrl",
+        "kind": "const",
+        "file": "apps/web/src/lib/supabase.ts",
+        "line": 3,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "supabaseAnonKey",
+        "kind": "const",
+        "file": "apps/web/src/lib/supabase.ts",
+        "line": 4,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "supabase",
+        "kind": "const",
+        "file": "apps/web/src/lib/supabase.ts",
+        "line": 10,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CallState",
+        "kind": "type",
+        "file": "apps/web/src/lib/useTelnyxCall.ts",
+        "line": 5,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "ACTIVE_AGENT_CALL_CONTROL_ID_KEY",
+        "kind": "const",
+        "file": "apps/web/src/lib/useTelnyxCall.ts",
+        "line": 11,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "toE164",
+        "kind": "function",
+        "file": "apps/web/src/lib/useTelnyxCall.ts",
+        "line": 13,
+        "exported": false,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "useTelnyxCall",
+        "kind": "function",
+        "file": "apps/web/src/lib/useTelnyxCall.ts",
+        "line": 20,
+        "exported": true,
+        "service": "web",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "AmdResult",
+        "kind": "type",
+        "file": "supabase/functions/_shared/amd.ts",
+        "line": 1,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "PREMIUM_AMD_CONFIG",
+        "kind": "const",
+        "file": "supabase/functions/_shared/amd.ts",
+        "line": 3,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "normalizeAmdResult",
+        "kind": "function",
+        "file": "supabase/functions/_shared/amd.ts",
+        "line": 11,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "shouldTreatAsHuman",
+        "kind": "function",
+        "file": "supabase/functions/_shared/amd.ts",
+        "line": 20,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "getUserFromRequest",
+        "kind": "function",
+        "file": "supabase/functions/_shared/auth.ts",
+        "line": 4,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "corsHeaders",
+        "kind": "const",
+        "file": "supabase/functions/_shared/cors.ts",
+        "line": 1,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "corsPreflightResponse",
+        "kind": "function",
+        "file": "supabase/functions/_shared/cors.ts",
+        "line": 9,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "dialerLog",
+        "kind": "function",
+        "file": "supabase/functions/_shared/dialer-engine.ts",
+        "line": 17,
+        "exported": false,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "BatchContact",
+        "kind": "interface",
+        "file": "supabase/functions/_shared/dialer-engine.ts",
+        "line": 21,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "DecodedClientState",
+        "kind": "interface",
+        "file": "supabase/functions/_shared/dialer-engine.ts",
+        "line": 29,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "encodeClientState",
+        "kind": "function",
+        "file": "supabase/functions/_shared/dialer-engine.ts",
+        "line": 37,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "decodeClientState",
+        "kind": "function",
+        "file": "supabase/functions/_shared/dialer-engine.ts",
+        "line": 41,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "AgentCallbackState",
+        "kind": "interface",
+        "file": "supabase/functions/_shared/dialer-engine.ts",
+        "line": 52,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "encodeAgentCallbackState",
+        "kind": "function",
+        "file": "supabase/functions/_shared/dialer-engine.ts",
+        "line": 58,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "decodeAgentCallbackState",
+        "kind": "function",
+        "file": "supabase/functions/_shared/dialer-engine.ts",
+        "line": 64,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "getContactDisplayName",
+        "kind": "function",
+        "file": "supabase/functions/_shared/dialer-engine.ts",
+        "line": 83,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "fetchDialableContacts",
+        "kind": "function",
+        "file": "supabase/functions/_shared/dialer-engine.ts",
+        "line": 93,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "fireBatch",
+        "kind": "function",
+        "file": "supabase/functions/_shared/dialer-engine.ts",
+        "line": 120,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "handleAmdResult",
+        "kind": "function",
+        "file": "supabase/functions/_shared/dialer-engine.ts",
+        "line": 249,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "handleCallHangup",
+        "kind": "function",
+        "file": "supabase/functions/_shared/dialer-engine.ts",
+        "line": 543,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "completeBatchAndAdvanceIfNeeded",
+        "kind": "function",
+        "file": "supabase/functions/_shared/dialer-engine.ts",
+        "line": 602,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "getContactCallCount",
+        "kind": "function",
+        "file": "supabase/functions/_shared/dialer-engine.ts",
+        "line": 690,
+        "exported": false,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "getActiveCallIdsForSession",
+        "kind": "function",
+        "file": "supabase/functions/_shared/dialer-engine.ts",
+        "line": 699,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "markNoAnswerAndCleanup",
+        "kind": "function",
+        "file": "supabase/functions/_shared/dialer-engine.ts",
+        "line": 704,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "resolveStaleBatchIfTimedOut",
+        "kind": "function",
+        "file": "supabase/functions/_shared/dialer-engine.ts",
+        "line": 744,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "getDialerChannelForUser",
+        "kind": "function",
+        "file": "supabase/functions/_shared/dialer-engine.ts",
+        "line": 825,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "DialerEventType",
+        "kind": "type",
+        "file": "supabase/functions/_shared/dialer-events.ts",
+        "line": 4,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "getSupabaseAdmin",
+        "kind": "function",
+        "file": "supabase/functions/_shared/dialer-events.ts",
+        "line": 19,
+        "exported": false,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "publishDialerEvent",
+        "kind": "function",
+        "file": "supabase/functions/_shared/dialer-events.ts",
+        "line": 32,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "CallState",
+        "kind": "type",
+        "file": "supabase/functions/_shared/redis.ts",
+        "line": 3,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "ActiveCallState",
+        "kind": "interface",
+        "file": "supabase/functions/_shared/redis.ts",
+        "line": 6,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "SessionBatchContact",
+        "kind": "interface",
+        "file": "supabase/functions/_shared/redis.ts",
+        "line": 19,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "SessionBatchState",
+        "kind": "interface",
+        "file": "supabase/functions/_shared/redis.ts",
+        "line": 25,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "AgentSessionState",
+        "kind": "interface",
+        "file": "supabase/functions/_shared/redis.ts",
+        "line": 34,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "getRedis",
+        "kind": "function",
+        "file": "supabase/functions/_shared/redis.ts",
+        "line": 48,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "redisKeys",
+        "kind": "const",
+        "file": "supabase/functions/_shared/redis.ts",
+        "line": 61,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "setCallState",
+        "kind": "function",
+        "file": "supabase/functions/_shared/redis.ts",
+        "line": 69,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "getCallState",
+        "kind": "function",
+        "file": "supabase/functions/_shared/redis.ts",
+        "line": 74,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "delCallState",
+        "kind": "function",
+        "file": "supabase/functions/_shared/redis.ts",
+        "line": 79,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "setSessionBatchState",
+        "kind": "function",
+        "file": "supabase/functions/_shared/redis.ts",
+        "line": 84,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "getSessionBatchState",
+        "kind": "function",
+        "file": "supabase/functions/_shared/redis.ts",
+        "line": 92,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "setAgentSessionState",
+        "kind": "function",
+        "file": "supabase/functions/_shared/redis.ts",
+        "line": 97,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "getAgentSessionState",
+        "kind": "function",
+        "file": "supabase/functions/_shared/redis.ts",
+        "line": 105,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "claimHumanAnswer",
+        "kind": "function",
+        "file": "supabase/functions/_shared/redis.ts",
+        "line": 110,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "clearSessionState",
+        "kind": "function",
+        "file": "supabase/functions/_shared/redis.ts",
+        "line": 119,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "getTelnyxApiKey",
+        "kind": "function",
+        "file": "supabase/functions/_shared/telnyx.ts",
+        "line": 17,
+        "exported": false,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "getTelnyxConnectionId",
+        "kind": "function",
+        "file": "supabase/functions/_shared/telnyx.ts",
+        "line": 29,
+        "exported": false,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "telnyxRequest",
+        "kind": "function",
+        "file": "supabase/functions/_shared/telnyx.ts",
+        "line": 36,
+        "exported": false,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "buildConferenceName",
+        "kind": "function",
+        "file": "supabase/functions/_shared/telnyx.ts",
+        "line": 78,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "createConference",
+        "kind": "function",
+        "file": "supabase/functions/_shared/telnyx.ts",
+        "line": 82,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "dialOutboundCall",
+        "kind": "function",
+        "file": "supabase/functions/_shared/telnyx.ts",
+        "line": 115,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "joinCallToConference",
+        "kind": "function",
+        "file": "supabase/functions/_shared/telnyx.ts",
+        "line": 150,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "hangupCall",
+        "kind": "function",
+        "file": "supabase/functions/_shared/telnyx.ts",
+        "line": 166,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "normalizePhone",
+        "kind": "function",
+        "file": "supabase/functions/contacts-import/index.ts",
+        "line": 22,
+        "exported": false,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "CANONICAL_FIELDS",
+        "kind": "const",
+        "file": "supabase/functions/contacts-parse-csv/index.ts",
+        "line": 5,
+        "exported": false,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "normalizeForMatch",
+        "kind": "function",
+        "file": "supabase/functions/contacts-parse-csv/index.ts",
+        "line": 70,
+        "exported": false,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "isBusinessLinkMatch",
+        "kind": "function",
+        "file": "supabase/functions/contacts-parse-csv/index.ts",
+        "line": 75,
+        "exported": false,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "headerMatchScore",
+        "kind": "function",
+        "file": "supabase/functions/contacts-parse-csv/index.ts",
+        "line": 80,
+        "exported": false,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "looksLikeLink",
+        "kind": "function",
+        "file": "supabase/functions/contacts-parse-csv/index.ts",
+        "line": 99,
+        "exported": false,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "looksLikePhone",
+        "kind": "function",
+        "file": "supabase/functions/contacts-parse-csv/index.ts",
+        "line": 110,
+        "exported": false,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "looksLikeName",
+        "kind": "function",
+        "file": "supabase/functions/contacts-parse-csv/index.ts",
+        "line": 116,
+        "exported": false,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "looksLikeRating",
+        "kind": "function",
+        "file": "supabase/functions/contacts-parse-csv/index.ts",
+        "line": 125,
+        "exported": false,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "looksLikeReviewCount",
+        "kind": "function",
+        "file": "supabase/functions/contacts-parse-csv/index.ts",
+        "line": 131,
+        "exported": false,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "valueMatchScore",
+        "kind": "function",
+        "file": "supabase/functions/contacts-parse-csv/index.ts",
+        "line": 138,
+        "exported": false,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "assignBestFitColumns",
+        "kind": "function",
+        "file": "supabase/functions/contacts-parse-csv/index.ts",
+        "line": 157,
+        "exported": false,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "get",
+        "kind": "function",
+        "file": "supabase/functions/deno.d.ts",
+        "line": 7,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "SupabaseClient",
+        "kind": "interface",
+        "file": "supabase/functions/deno_npm.d.ts",
+        "line": 34,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "createClient",
+        "kind": "function",
+        "file": "supabase/functions/deno_npm.d.ts",
+        "line": 49,
+        "exported": true,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "log",
+        "kind": "const",
+        "file": "supabase/functions/dialer-session-start/index.ts",
+        "line": 19,
+        "exported": false,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "getLastWeekBounds",
+        "kind": "function",
+        "file": "supabase/functions/ensure-week-summary/index.ts",
+        "line": 5,
+        "exported": false,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "DAY_NAMES",
+        "kind": "const",
+        "file": "supabase/functions/team-performance/index.ts",
+        "line": 5,
+        "exported": false,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "getDateRange",
+        "kind": "function",
+        "file": "supabase/functions/team-performance/index.ts",
+        "line": 7,
+        "exported": false,
+        "service": "supabase",
+        "doc": "arch.dependency-graph"
+      },
+      {
+        "name": "webhookLog",
+        "kind": "function",
+        "file": "supabase/functions/telnyx-webhook/index.ts",
+        "line": 24,
+        "exported": false,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "getSupabaseAdmin",
+        "kind": "function",
+        "file": "supabase/functions/telnyx-webhook/index.ts",
+        "line": 28,
+        "exported": false,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "verifySignature",
+        "kind": "function",
+        "file": "supabase/functions/telnyx-webhook/index.ts",
+        "line": 32,
+        "exported": false,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "asString",
+        "kind": "function",
+        "file": "supabase/functions/telnyx-webhook/index.ts",
+        "line": 75,
+        "exported": false,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      },
+      {
+        "name": "processWebhook",
+        "kind": "function",
+        "file": "supabase/functions/telnyx-webhook/index.ts",
+        "line": 79,
+        "exported": false,
+        "service": "supabase",
+        "doc": "arch.data-flows"
+      }
+    ],
+    "truncated": false,
+    "truncated_count": 0
+  }
+}

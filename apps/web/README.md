@@ -13,19 +13,19 @@ npm run preview    # serve the production build
 
 ## Layout
 
-| Path | Contains |
-|---|---|
-| `src/components/` | Feature screens — `Dashboard`, `Dialer`, `Contacts`, `Campaigns`, `Analytics`, `Settings` |
-| `src/components/<feature>/` | Sub-components for a single feature |
-| `src/components/ui/` | Generated shadcn/ui primitives — excluded from Prettier, prefer regenerating over editing |
-| `src/contexts/` | `AuthContext`, `PhoneNumbersContext` |
-| `src/hooks/` | `useDialerSession` — the live dial-session state machine |
-| `src/lib/` | `supabase.ts` (client), `api.ts` (Edge Function calls), `useTelnyxCall.ts` (WebRTC) |
-| `src/styles/globals.css` | **The only stylesheet.** Tailwind entry + design tokens |
+| Path                              | Contains                                                                                  |
+| --------------------------------- | ----------------------------------------------------------------------------------------- |
+| `src/components/`                 | Feature screens — `Dashboard`, `Dialer`, `Contacts`, `Campaigns`, `Analytics`, `Settings` |
+| `src/components/<feature>/`       | Sub-components for a single feature                                                       |
+| `src/components/ui/`              | Generated shadcn/ui primitives — excluded from Prettier, prefer regenerating over editing |
+| `src/contexts/`                   | `AuthContext`, `PhoneNumbersContext`                                                      |
+| `src/hooks/`                      | `useDialerSession` — the live dial-session state machine                                  |
+| `src/lib/`                        | `supabase.ts` (client), `api.ts` (Edge Function calls), `useTelnyxCall.ts` (WebRTC)       |
+| `apps/web/src/styles/globals.css` | **The only stylesheet.** Tailwind entry + design tokens                                   |
 
 ## Styling
 
-`src/styles/globals.css` is the single entry point, compiled by
+`apps/web/src/styles/globals.css` is the single entry point, compiled by
 `@tailwindcss/vite`. Design tokens are CSS custom properties on `:root`,
 re-exported to Tailwind via `@theme inline`. Add colors as tokens; the raw hex
 literals throughout the components are legacy.

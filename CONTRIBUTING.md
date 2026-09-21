@@ -70,11 +70,11 @@ Deno, not Node. They're excluded from the ESLint config because the globals and
 module resolution differ.
 
 - Every function except `telnyx-webhook` requires a valid Supabase JWT
-  (`_shared/auth.ts`).
+  (`supabase/functions/_shared/auth.ts`).
 - `telnyx-webhook` is deployed with `--no-verify-jwt` because Telnyx calls it
   directly; it authenticates via the shared signing secret instead. Don't remove
   that check.
-- Return CORS headers from `_shared/cors.ts` on every response, including errors.
+- Return CORS headers from `supabase/functions/_shared/cors.ts` on every response, including errors.
 
 ## Commits and pull requests
 

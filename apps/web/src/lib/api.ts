@@ -636,13 +636,13 @@ export async function startDialerSession(args: {
     if (res.status === 503 && data.code === 'MISSING_TELNYX_CONNECTION_ID') {
       throw new Error(
         data.error ||
-          'Set TELNYX_CONNECTION_ID in Supabase secrets. See docs/TELNYX_CALL_CONTROL_SETUP.md.'
+          'Set TELNYX_CONNECTION_ID in Supabase secrets. See docs/guides/telnyx-call-control-setup.md.'
       );
     }
     if (res.status === 503 && data.code === 'INVALID_TELNYX_CONNECTION') {
       throw new Error(
         data.error ||
-          'Use a Call Control Application connection in Telnyx, not the WebRTC credential connection. See docs/TELNYX_CALL_CONTROL_SETUP.md.'
+          'Use a Call Control Application connection in Telnyx, not the WebRTC credential connection. See docs/guides/telnyx-call-control-setup.md.'
       );
     }
     if (res.status === 503 && data.code === 'MISSING_TELNYX_API_KEY') {

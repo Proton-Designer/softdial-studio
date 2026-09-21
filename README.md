@@ -41,7 +41,7 @@ softdial-studio/
 │       │   └── styles/      Tailwind v4 entry + design tokens
 │       └── index.html
 ├── supabase/
-│   ├── functions/           17 Deno Edge Functions
+│   ├── functions/           16 Deno Edge Functions
 │   │   └── _shared/         dialer-engine, telnyx, redis, amd, auth, cors
 │   ├── migrations/          Ordered SQL migrations
 │   └── sql/                 One-off scripts for the SQL editor
