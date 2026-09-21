@@ -11,7 +11,7 @@ answers:
   - "how do I keep the brain current"
 covers: "What .brain doc to update for a given change type, agent-specific update rules, the CI gate"
 excludes: "How to write a .brain document (see gov.documentation-standards), when a document should be archived (see gov.knowledge-lifecycle)"
-tokens_est: 1047
+tokens_est: 1202
 ---
 
 # Contribution Protocol
@@ -35,6 +35,18 @@ between code and summary is exactly where agents start being confidently wrong.
 ```bash
 node vendor/agent-brain/bin/brain verify . --strict
 ```
+
+**After changing anything under `.brain/`, refresh the generated artifacts and commit
+them with your change:**
+
+```bash
+node vendor/agent-brain/bin/brain index .   # indexes + routing rows + frontmatter hashes
+node vendor/agent-brain/bin/brain graph .   # .brain/graph.html — committed here, unlike upstream
+```
+
+Unlike Agent-Brain's default, this repo **commits `graph.html`** so the knowledge graph
+opens from a fresh clone without anyone needing the CLI. The cost of that choice is that
+it goes stale silently if you skip the regenerate step — so don't.
 
 ---
 

@@ -2,10 +2,10 @@
   "meta": {
     "artifact": "knowledge-map",
     "version": "1.0",
-    "generated_at": "2026-09-21T22:01:39.022Z",
+    "generated_at": "2026-09-21T22:12:07.001Z",
     "target": "/Users/aymanmohammed/Desktop/Softdial",
     "git": {
-      "commit": "7086147",
+      "commit": "f433cc4",
       "branch": "chore/repo-modernization",
       "dirty": true
     },
@@ -267,7 +267,7 @@
         "type": "governance",
         "status": "canonical",
         "owner": "unassigned",
-        "tokens_est": 1047,
+        "tokens_est": 1202,
         "covers": "What .brain doc to update for a given change type, agent-specific update rules, the CI gate",
         "excludes": "How to write a .brain document (see gov.documentation-standards), when a document should be archived (see gov.knowledge-lifecycle)",
         "answers": [
@@ -1624,7 +1624,7 @@
       {
         "question": "how do I keep the brain current",
         "id": "gov.contribution-protocol",
-        "tokens_est": 1047,
+        "tokens_est": 1202,
         "kind": "document",
         "anchor": null
       },
@@ -1953,7 +1953,7 @@
       {
         "question": "what do I update when I change code",
         "id": "gov.contribution-protocol",
-        "tokens_est": 1047,
+        "tokens_est": 1202,
         "kind": "document",
         "anchor": null
       },
@@ -2219,7 +2219,7 @@
       {
         "question": "when do I need to update a .brain document",
         "id": "gov.contribution-protocol",
-        "tokens_est": 114,
+        "tokens_est": 269,
         "kind": "section",
         "anchor": "the-rule"
       },
